@@ -15,13 +15,13 @@ var words = ["javascript", "java", "python", "typescript", "hangman", "programme
 var input = process.stdin;
 input.setEncoding('utf-8');
 
-console.log(clr("\n     Hangman", "green"));
+console.log(clr("\n Jogo da Forca", "green"));
 console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
 
 initGame();
 
 console.log(clr(" " + obfWord.join(" ") + "\n", "cian"));
-process.stdout.write(clr(" Guess letter: ", "yellow"));
+process.stdout.write(clr(" Escolha uma letra: ", "yellow"));
 
 input.on('data', function (data) {
     check(data.trim().toLowerCase());
@@ -30,7 +30,7 @@ input.on('data', function (data) {
 function check(data) {
     if (/^[a-z]{1}$/i.test(data)) {
         if (playedLetters.indexOf(data) >= 0) {
-            console.log(clr("\n The letter you wrote was already played!", "red"));
+            console.log(clr("\n A letra que você escolheu foi jogada", "red"));
         }
         else {
             playedLetters.push(data);
@@ -44,7 +44,7 @@ function check(data) {
                 if (wordl < 1) {
                     console.log(clr("\n " + obfWord.join(" "), "cian"));
                     console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-                    console.log(clr("\n  You won!\n", "green"));
+                    console.log(clr("\n  Você venceu !\n", "green"));
                     process.exit(0);
                 }
             }
@@ -54,20 +54,20 @@ function check(data) {
             if (guessesRemaining < 1) {
                 console.log(clr("\n " + obfWord.join(" ") + "\n", "cian"));
                 console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-                console.log(clr("\n  You lose! \n", "red"));
-                console.log(clr("  The word was: " + word.join("") + "\n", "red"));
+                console.log(clr("\n  Você perdeu! \n", "red"));
+                console.log(clr("  A palavra nao era essa : " + word.join("") + "\n", "red"));
                 process.exit(0);
             }
         }
     }
     else {
-        console.log(clr("\n Write just one character!", "red"));
+        console.log(clr("\n Escolha apenas uma letra!", "red"));
     }
     console.log(clr("\n " + obfWord.join(" ") + "\n", "cian"));
     console.log(clr(" " + guessesRemaining + " guesses remaining", "green"));
     console.log(clr(" Letters already played: " + playedLetters.join(", "), "green"));
     console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
-    process.stdout.write(clr(" Guess letter: ", "yellow"));
+    process.stdout.write(clr(" Escolha uma letra: ", "yellow"));
 }
 
 /** return random word from array of words */
