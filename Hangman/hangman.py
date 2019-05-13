@@ -21,7 +21,6 @@ words = db["words"]
 def randWord():
 	return words[randint(0, len(words))]
 
-
 def initGame():
 	global word, wordl, obfWord
 	word = list(randWord())
@@ -30,7 +29,6 @@ def initGame():
 	for i in range(1, len(word) - 1):
 		obfWord.append("_")
 	obfWord.append(word[len(word) - 1])
-
 
 def check(data):
 	global word, wordl, obfWord, playedLetters, guessesRemaining
