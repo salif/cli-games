@@ -28,7 +28,7 @@ input.on('data', function (data) {
 });
 
 function check(data) {
-	if (/^[a-z]{1}$/i.test(data)) {
+	if (/^.{1}$/i.test(data)) {
 		if (playedLetters.indexOf(data) >= 0) {
 			console.log(clr(`\n ${db["played"]}`, "red"));
 		} else {

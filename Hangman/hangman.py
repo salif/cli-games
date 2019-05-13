@@ -32,7 +32,7 @@ def initGame():
 
 def check(data):
 	global word, wordl, obfWord, playedLetters, guessesRemaining
-	if re.search("^[a-z]{1}$", data):
+	if re.search("^.{1}$", data):
 		if data in playedLetters:
 			print(clr("\n " + db["played"], "red"))
 		else:
