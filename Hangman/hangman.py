@@ -1,12 +1,11 @@
-"""
-      Hangman
-"""
-
 language = "en-us"
 import re
 import sys
 from random import randint
 import json
+import pyfiglet
+
+print(pyfiglet.figlet_format("Hello!"))
 
 with open("words/" + language + ".json") as json_file:
 	db = json.load(json_file)
@@ -44,14 +43,14 @@ def check(data):
 						wordl -= 1
 				if wordl < 1:
 					print(clr("\n " + " ".join(obfWord), "cian"))
-					print(clr("\n ++++++++++++++++++++++++++++++", "blue"))
+					print(clr("\n --------------------------------------------", "blue"))
 					print(clr("\n  " + db["you_won"] + "\n", "green"))
 					sys.exit()
 			else:
 				guessesRemaining -= 1
 			if guessesRemaining < 1:
 				print(clr("\n " + " ".join(obfWord) + "\n", "cian"))
-				print(clr("\n ++++++++++++++++++++++++++++++", "blue"))
+				print(clr("\n --------------------------------------------", "blue"))
 				print(clr("\n  " + db["you_lose"] + " \n", "red"))
 				print(clr("  " + db["word_was"] + " " + "".join(word) + "\n", "red"))
 				sys.exit()
@@ -60,7 +59,7 @@ def check(data):
 	print(clr("\n " + (" ").join(obfWord) + "\n", "cian"))
 	print(clr(" " + str(guessesRemaining) + " " + db["remaining"], "green"))
 	print(clr(" " + db["letters"] + " " + (", ").join(playedLetters), "green"))
-	print(clr("\n ++++++++++++++++++++++++++++++\n", "blue"))
+	print(clr("\n --------------------------------------------\n", "blue"))
 	print(clr(" " + db["guess"] + " ", "yellow"), end='')
 	data = input()
 	check(data)
@@ -78,8 +77,8 @@ def clr(text, color):
 		return "\x1b[93m" + text + "\x1b[0m"
 
 def main():
-	print(clr("\n     " + db["hangman"], "green"))
-	print(clr("\n ++++++++++++++++++++++++++++++\n", "blue"))
+	print(clr("     " + db["hangman"], "green"))
+	print(clr("\n --------------------------------------------\n", "blue"))
 	initGame()
 	print(clr(" " + " ".join(obfWord) + "\n", "cian"))
 	print(clr(" " + db["guess"] + " ", "yellow"), end='')
