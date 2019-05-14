@@ -1,9 +1,12 @@
-language = "en-us"
 import re
 import sys
 from random import randint
 import json
 import pyfiglet
+
+language = "en-us"
+if(len(sys.argv) > 1):
+	language = sys.argv[1]
 
 print(pyfiglet.figlet_format("Hello!"))
 

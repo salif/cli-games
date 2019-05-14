@@ -1,16 +1,18 @@
-/*
- * Hangman
- */
+var fs = require('fs');
 
-var language = "en-us";
 var word = [];
 var wordl = 0;
 var obfWord = [];
 var playedLetters = [];
 var guessesRemaining = 8;
-var fs = require('fs');
+var language = "en-us";
+
+if(process.argv.length > 2) {
+	language = process.argv[2];
+}
+
 var db = JSON.parse(fs.readFileSync(`words/${language}.json`, "utf8"));
-var  words = db["words"];
+var words = db["words"];
 
 var input = process.stdin;
 input.setEncoding('utf-8');
