@@ -10,18 +10,18 @@ if(process.argv.length > 2) {
 }
 
 var db = require(`./words/${language}.json`);
-var words = db["words"];
+var words = db.words;
 
 var input = process.stdin;
 input.setEncoding('utf-8');
 
-console.log(clr(`\n     ${db["hangman"]}`, "green"));
+console.log(clr(`\n     ${db.hangman}`, "green"));
 console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
 
 initGame();
 
 console.log(clr(" " + obfWord.join(" ") + "\n", "cian"));
-process.stdout.write(clr(` ${db["guess"]} `, "yellow"));
+process.stdout.write(clr(` ${db.guess} `, "yellow"));
 
 input.on('data', function (data) {
 	check(data.trim().toLowerCase());
@@ -30,7 +30,7 @@ input.on('data', function (data) {
 function check(data) {
 	if (/^.{1}$/i.test(data)) {
 		if (playedLetters.indexOf(data) >= 0) {
-			console.log(clr(`\n ${db["played"]}`, "red"));
+			console.log(clr(`\n ${db.played}`, "red"));
 		} else {
 			playedLetters.push(data);
 			if (word.indexOf(data) >= 0) {
@@ -43,7 +43,7 @@ function check(data) {
 				if (wordl < 1) {
 					console.log(clr(`\n ${obfWord.join(" ")}`, "cian"));
 					console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-					console.log(clr(`\n  ${db["you_won"]}\n`, "green"));
+					console.log(clr(`\n  ${db.you_won}\n`, "green"));
 					process.exit(0);
 				}
 			} else {
@@ -52,19 +52,19 @@ function check(data) {
 			if (guessesRemaining < 1) {
 				console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
 				console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-				console.log(clr(`\n  ${db["you_lose"]} \n`, "red"));
-				console.log(clr(`  ${db["word_was"]} ${word.join("")}\n`, "red"));
+				console.log(clr(`\n  ${db.you_lose} \n`, "red"));
+				console.log(clr(`  ${db.word_was} ${word.join("")}\n`, "red"));
 				process.exit(0);
 			}
 		}
 	} else {
-		console.log(clr(`\n ${db["one_char"]}`, "red"));
+		console.log(clr(`\n ${db.one_char}`, "red"));
 	}
 	console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
-	console.log(clr(` ${guessesRemaining} ${db["remaining"]}`, "green"));
-	console.log(clr(` ${db["letters"]} ${playedLetters.join(", ")}`, "green"));
+	console.log(clr(` ${guessesRemaining} ${db.remaining}`, "green"));
+	console.log(clr(` ${db.letters} ${playedLetters.join(", ")}`, "green"));
 	console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
-	process.stdout.write(clr(` ${db["guess"]} `, "yellow"));
+	process.stdout.write(clr(` ${db.guess} `, "yellow"));
 }
 
 /** return random word from array of words */
