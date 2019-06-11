@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var word = [];
 var wordl = 0;
 var obfWord = [];
@@ -11,7 +9,7 @@ if(process.argv.length > 2) {
 	language = process.argv[2];
 }
 
-var db = JSON.parse(fs.readFileSync(`words/${language}.json`, "utf8"));
+var db = require(`./words/${language}.json`);
 var words = db["words"];
 
 var input = process.stdin;
