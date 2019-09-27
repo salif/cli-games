@@ -1,0 +1,12 @@
+{
+	"words": ["javascript", "java", "python", "typescript", "Galgenraten", "programmer", "developer", "coder", "github", "google", "terminal", "machine", "scripting", "server", "program", "array", "bytecode", "command", "function", "constructor", "arguments", "visual", "variable", "source", "editor", "microsoft", "library", "dependency", "version", "testing", "package", "documentation", "conditional", "loops", "database", "hacker", "binary", "bitwise", "data", "algorithms", "client", "localhost", "Objekt", "Klassen", "Felder", "Berreitstellung", "boolean", "methods", "factorial", "recursion", "iteration", "instantiation", "declaration", "type", "stack", "heap", "stackoverflow", "indentation", "regex", "Speicher", "macros", "Tastatur", "Automation", "Dateien", "dictionary"],
+	"played": "Der Buchstabe wurde von dir schon ausgewählt!",
+	"you_won": "Du hast gewonnen!",
+	"you_lose": "Du hast verloren!",
+	"word_was": "Das Wort war:",
+	"one_char": "Nur einen Buchstaben!",
+	"remaining": "verbleibende Versuche",
+	"letters": "Gewählte Buchstaben:",
+	"guess": "Wähle einen Buchstaben:",
+	"hangman": "Galgenraten"
+}
