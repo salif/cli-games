@@ -4,7 +4,7 @@ from random import randint
 import json
 import pyfiglet
 
-language = "en-us"
+language = "de"
 if(len(sys.argv) > 1):
 	language = sys.argv[1]
 
