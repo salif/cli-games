@@ -1,0 +1,12 @@
+{
+	"words": ["javascript", "java", "python", "typescript", "impiccato", "programmatore", "sviluppatore", "coder", "github", "google", "terminale", "macchina", "scripting", "server", "programma", "array", "bytecode", "comando", "funzione", "costruttore", "argomenti", "visuale", "variabile", "sorgente", "editor", "microsoft", "libreria", "dipendenza", "versione", "testing", "package", "documentazione", "condizionale", "ciclo", "database", "hacker", "binario", "bitwise", "dato", "algoritmo", "client", "localhost", "oggetto", "classe", "campo", "rilascio", "booleano", "metodo", "fattoriale", "ricorsione", "iterazione", "istanza", "dichiarazione", "tipo", "stack", "heap", "stackoverflow", "indentazione", "regex", "memoria", "macro", "tastiera", "automazione", "file", "dizionario", "symbolon", "mason", "cryptex", "capolavoro", "artefatto", "piramide", "rituale", "noetica", "pitagora", "sincero", "tempio", "papiro", "ebreo", "latino", "mela", "altare", "crocifissione", "sciamano", "oscurità", "teschio", "vine", "anima", "libro"],
+	"played": "Questa lettera è già stata inserita!",
+	"you_won": "Hai vinto!",
+	"you_lose": "Hai perso!",
+	"word_was": "La parola era:",
+	"one_char": "Scrivi solo una lettera!",
+	"remaining": "tentativi rimasti",
+	"letters": "Lettere già inserite:",
+	"guess": "Inserisci una lettera:",
+	"hangman": "L'impiccato"
+}
