@@ -70,7 +70,18 @@ def checkWiningConditions():
         return g[1][3]
     return 0
 
+
+def resetAllVar():
+    global gamemat, player, gameEnd, gameResult
+    gamemat = [0] * 4
+    for i in range(4):
+        gamemat[i] = [0] * 4
+    player = 1
+    gameEnd = False
+    gameResult = None
+
 def gameInit():
+    resetAllVar()
     gameEnd = False
     while not gameEnd:
         for i in range(5):
@@ -82,9 +93,21 @@ def gameInit():
             gameEnd = True
     # Game ends
     print("Player " + str(gameResult) + " wins!")
+    print()
+    print("Do you want to play again? Yes/No/Y/N")
+    tmp = input().lower()
+    if tmp == "yes" or tmp == "y":
+        main()
+        return
+    else:
+        exit()
+
+
 
 
 def main():
+    for i in range(10):
+        print()
     print("Welcome to Tic Tac Toe")
     print("This game needs 2 players")
     print("Press enter to start!")
