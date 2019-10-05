@@ -54,7 +54,20 @@ def renderGamemat():
     print()
 
 def checkWiningConditions():
-    # algorithm to be improved later
+    g = gamemat
+    # algorithm to be improved later :P
+    for i in range(1,4):
+        # check column
+        if(g[i][1] != 0 and g[i][1] == g[i][2] and g[i][2] == g[i][3] and g[i][1] == g[i][3]):
+            return g[i][1]
+        # check row
+        if(g[1][i] != 0 and g[1][i] == g[2][i] and g[2][i] == g[3][i] and g[1][i] == g[3][i]):
+            return g[1][i]
+    # check diagonal
+    if(g[1][1] != 0 and g[1][1] == g[2][2] and g[2][2] == g[3][3] and g[1][1] == g[3][3]):
+        return g[1][1]
+    if(g[1][3] != 0 and g[1][3] == g[2][2] and g[2][2] == g[3][1] and g[1][3] == g[3][1]):
+        return g[1][3]
     return 0
 
 def gameInit():
@@ -69,7 +82,6 @@ def gameInit():
             gameEnd = True
     # Game ends
     print("Player " + str(gameResult) + " wins!")
-    print("Do you want to play again?")
 
 
 def main():
