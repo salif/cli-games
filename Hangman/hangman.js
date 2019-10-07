@@ -10,6 +10,7 @@ if(process.argv.length > 2) {
 }
 
 var db = require(`./words/${language}.json`);
+var pics = require('./hangarts.json');
 var words = db.words;
 
 var input = process.stdin;
@@ -50,6 +51,7 @@ function check(data) {
 				guessesRemaining -= 1;
 			}
 			if (guessesRemaining < 1) {
+                console.log(pics[0].join('\n'));
 				console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
 				console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
 				console.log(clr(`\n  ${db.you_lose} \n`, "red"));
@@ -60,6 +62,7 @@ function check(data) {
 	} else {
 		console.log(clr(`\n ${db.one_char}`, "red"));
 	}
+    console.log(pics[guessesRemaining].join('\n'));
 	console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
 	console.log(clr(` ${guessesRemaining} ${db.remaining}`, "green"));
 	console.log(clr(` ${db.letters} ${playedLetters.join(", ")}`, "green"));
