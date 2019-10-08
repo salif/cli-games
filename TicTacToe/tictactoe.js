@@ -43,6 +43,29 @@ function check(data) {
     return false;
 }
 
+function isWinner(p) {
+    let m = p == 1 ? 'X' : 'O';
+    return checkDiagonals(m) || checkRows(m) || checkDiagonals(m);
+}
+
+function checkRows(m) {
+    for (let row of board) {
+        if (row[0] == m && row[1] == m && row[2] == m) return true;
+    }
+    return false;
+}
+
+function checkColumns(m) {
+    for (let col in board) {
+        if (board[0][col] === m && board[1][col] === m && board[2][col] === m) return true;
+    }
+    return false;
+}
+
+function checkDiagonals(m) {
+    return (board[0][0] === m && board[1][1] === m && board[2][2] === m) || (board[2][0] === m && board[1][1] === m && board[0][2] === m);
+}
+
 
 /**LISTENERS**/
 
@@ -60,10 +83,20 @@ input.on('data', data => {
    } else {
        if (check(data)) {
            let i = check(data).map(x => parseInt(x) - 1);
-           board[i[0]][i[1]] = player == 1 ? 'X' : 'O';
-           player = player == 1 ? 2 : 1;
-           printBoard();
-           prompt();
+           if (board[i[0]][i[1]] !== ' ') {
+               print('Invalid move! Somebody has already marked it down\n');
+               prompt();
+           } else {
+                board[i[0]][i[1]] = player == 1 ? 'X' : 'O';
+                if (isWinner(player)) {
+                    printBoard();
+                    print(`Congrats! ${player == 1 ? p1 : p2} is the winner!!!\n`);
+                    process.exit();
+                }
+                player = player == 1 ? 2 : 1;
+                printBoard();
+                prompt();
+           }
        }
    }
 })
