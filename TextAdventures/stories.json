@@ -1,36 +1,58 @@
 {
     "stories": [
-       {
-           "title": "The hello world story",
-           "description": "One upon a time, anyway you want to be programmer?",
-           "answers":[
-               {
-                   "title": "Yes",
-                   "description": "Do you want to install an app for it?",
-                   "over": "false",
-                   "answers": [
-                       {
-                           "title": "Yes",
-                           "description": "Greast! Then go to play store and install sololearn",
-                           "over": "true"
+        {
+            "title": "The hello world story",
+            "description": "Once upon a time - not very long ago - lived a random citizen called Eric. He didn't show interest in anything at all! One day some of his nerdy friends invited him for an event. Actually it was about a technology exhibtion. Would you make Eric go to that event on that day?",
+            "answers": [
+                {
+                    "title": "Yes",
+                    "description": "Great! On that day you went there with a fresh-looking suite for the sake of your sakes. Although it was not much dull for Eric that day. He found and made many new pals. Also there were some rooms that are open for the exhibition. There were many rooms too!",
+                    "over": "false",
+                    "answers": [
+                        {
+                            "title": "Just stay and chat with your pals",
+                            "description": "Nice chat! But all of your day ended just like that. You feel sleepy now - and of course the exhibition was over. Go to the bed buddy :D",
+                            "over": "true"
                         },
                         {
-                            "title": "No",
-                            "description": "Then you are out",
+                            "title": "Go to the gaming centre",
+                            "description": "Incredible! You beat many of your friends. But you made one wrong decision. You started betting and returned home with no money ;(",
                             "over": "true"
+                        },
+                        {
+                            "title": "Go to the cafe",
+                            "description": "The food were delicious! But they were prepared with no hygienic measures. So you had to meet the doctor and do nothing after that. Choose wisely next time!",
+                            "over": "true"
+                        },
+                        {
+                            "title": "Go to Programmer arcade",
+                            "description": "You found that this room is very strange and you want to leave it very soon. But something tell that you stay there. Would you?",
+                            "over": "false",
+                            "answers": [
+                                {
+                                    "title": "Stay here",
+                                    "description": "Time to test",
+                                    "over": "true"
+                                },
+                                {
+                                    "title": "Get out soon",
+                                    "description": "Huh? Bad choice you made. Better luck next time!",
+                                    "over": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "No",
+                    "description": "Sleepy monster! Just stay there for your entire life ....",
+                    "over": "true"
                 }
-                   ]
-               },
-               {
-                   "title": "No",
-                   "description": "Then you are out",
-                   "over": "true"
-                }
-           ]
+            ]
         },
-       {
-           "title": "The unknown story",
-           "over": "true"
+        {
+            "title": "The unknown story",
+            "over": "true"
         }
     ],
     "over": "false"
