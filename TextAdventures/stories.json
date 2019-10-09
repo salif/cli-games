@@ -1,0 +1,37 @@
+{
+    "stories": [
+       {
+           "title": "The hello world story",
+           "description": "One upon a time, anyway you want to be programmer?",
+           "answers":[
+               {
+                   "title": "Yes",
+                   "description": "Do you want to install an app for it?",
+                   "over": "false",
+                   "answers": [
+                       {
+                           "title": "Yes",
+                           "description": "Greast! Then go to play store and install sololearn",
+                           "over": "true"
+                        },
+                        {
+                            "title": "No",
+                            "description": "Then you are out",
+                            "over": "true"
+                }
+                   ]
+               },
+               {
+                   "title": "No",
+                   "description": "Then you are out",
+                   "over": "true"
+                }
+           ]
+        },
+       {
+           "title": "The unknown story",
+           "over": "true"
+        }
+    ],
+    "over": "false"
+}
