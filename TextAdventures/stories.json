@@ -7,69 +7,79 @@
                 {
                     "title": "Yes",
                     "description": "\nGreat! On that day you went there with a fresh-looking suite for the sake of your sakes. Although it was not much dull for Eric that day. He found and made many new pals. Also there were some rooms that are open for the exhibition. There were many rooms too!\n",
-                    "over": "false",
+                    "over": false,
                     "answers": [
                         {
                             "title": "Just stay and chat with your pals",
                             "description": "\nNice chat! But all of your day ended just like that. You feel sleepy now - and of course the exhibition was over. Go to the bed buddy :D\n",
-                            "over": "true"
+                            "over": true,
+                            "win": false
                         },
                         {
                             "title": "Go to the gaming centre",
                             "description": "\nIncredible! You beat many of your friends. But you made one wrong decision. You started betting and returned home with no money ;(\n",
-                            "over": "true"
+                            "over": true,
+                            "win": false
                         },
                         {
                             "title": "Go to the cafe",
                             "description": "\nThe food were delicious! But they were prepared with no hygienic measures. So you had to meet the doctor and do nothing after that. Choose wisely next time!\n",
-                            "over": "true"
+                            "over": true,
+                            "win": false
                         },
                         {
                             "title": "Go to Programmer arcade",
                             "description": "\nYou found that this room is very strange and you want to leave it very soon. But something tell that you stay there. Would you?\n",
-                            "over": "false",
+                            "over": false,
                             "answers": [
                                 {
                                     "title": "Stay here",
                                     "description": "\nIt was very hard to stay there until you heard a description about programming. You feel little interest about it! Then the committe announced that they are giving lessons for novice programmers distributed some applications for the people who would like to join. What would you like to learn?",
-                                    "over": "false",
+                                    "over": false,
                                     "answers": [
                                         {
                                             "title": "Java",
                                             "description": "\nJava runs on more that 3 billion devices - they said. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": true
                                         },
                                         {
                                             "title": "Javascript",
                                             "description": "\nYou quickly realised JS is just an awesome language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": true
                                         },
                                         {
                                             "title": "Python",
                                             "description": "\nThe most popular programming language in the world. You wonder how a reptile can change the world :D Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": true
                                         },
                                         {
                                             "title": "Assembly",
                                             "description": "\nAssembly is like the core of many things - including programming languages and OS. But this is no good for beginners. You fell discouraged and started hating programming :(",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": false
                                         },
                                         {
                                             "title": "C++",
                                             "description": "\nIt seems to be hard. But you started loving it! Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": true
                                         },
                                         {
                                             "title": "Lua",
                                             "description": "\nLua - a small but a powerful language. You quickly got the language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": "true"
+                                            "over": true,
+                                            "win": true
                                         }
                                     ]
                                 },
                                 {
                                     "title": "Get out soon",
                                     "description": "\nHuh? Bad choice you made. Better luck next time!",
-                                    "over": "true"
+                                    "over": true,
+                                    "win": false
                                 }
                             ]
                         }
@@ -78,15 +88,17 @@
                 {
                     "title": "No",
                     "description": "\nSleepy monster! Just stay there for your entire life ....",
-                    "over": "true"
+                    "over": true,
+                    "win": false
                 }
             ]
         },
         {
             "title": "The unknown story",
             "description": "No story here!",
-            "over": "true"
+            "over": true,
+            "win": false
         }
     ],
-    "over": "false"
+    "over": false
 }
