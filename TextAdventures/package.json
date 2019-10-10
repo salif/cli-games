@@ -1,0 +1,28 @@
+{
+  "name": "text-adventures",
+  "version": "1.0.0",
+  "description": "A text adventures game for Salif's CLI game collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "play": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salifm/cli-games.git"
+  },
+  "keywords": [
+    "text-adventure",
+    "cli",
+    "game"
+  ],
+  "author": "Seniru Pasan",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/salifm/cli-games/issues"
+  },
+  "homepage": "https://github.com/salifm/cli-games#readme",
+  "dependencies": {
+    "prompts": "^2.2.1"
+  }
+}
