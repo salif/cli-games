@@ -42,7 +42,7 @@ Want to contribute this game? Great! Here are some ways that you can help us wit
     <summary>Submitting PRs</summary>
     You can create PRs for following tasks<br>
         <ul>
-            <li><a href='Creating-a-new-story'>Creating a new story</a></li>
+            <li><a href='/#creating-a-new-story'>Creating a new story</a></li>
             <li>Fixing bugs</li>
             <li>Improvements for the code</li>
         </ul>
