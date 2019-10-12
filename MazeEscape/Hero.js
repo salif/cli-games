@@ -1,3 +1,4 @@
+const symbols = require('./maps').symbols;
 
 class Hero {
 
@@ -5,6 +6,7 @@ class Hero {
         this.x = 0;
         this.y = 0;
         this.map = map;
+        this.won = false;
     }
 
     moveUp() {
@@ -39,6 +41,7 @@ class Hero {
         if (this.canGo(x, y)) {
             this.x = x;
             this.y = y;
+            if (this.isWinningPosition(x, y)) this.won = true;
             this.map[y][x] = '♟';
         }
     }
@@ -48,7 +51,22 @@ class Hero {
     }
 
     canGo(x, y) {
-        return this.map[y] && this.map[y][x] == " ";
+        return this.map[y] && (this.map[y][x] == " " || this.map[y][x] == symbols.door);
+    }
+
+    isWinningPosition(x, y) {
+        return this.map[y][x] == symbols.door
+    }
+
+    hasWon() {
+        return this.won;
+    }
+
+    nextMap(map) {
+        this.map = map;
+        this.x = 0;
+        this.y = 0;
+        this.won = false;
     }
 
 }
