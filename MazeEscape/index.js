@@ -3,7 +3,7 @@ const esc = require('ansi-escapes');
 const {maps, symbols} = require('./maps.json');
 const Hero = require('./Hero');
 
-let round = 5;
+let round = 0;
 let map = maps[round];
 let hero = new Hero(map);
 
