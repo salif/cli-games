@@ -44,13 +44,15 @@ process.stdin.on('keypress', (str, key) => {
 })
 
 function draw() {
-    let res = '';
+    let res = "  "+ (symbols.wall + " ").repeat(map[0].length) + "\n";
     for (let row of map) {
+        res += symbols.wall + " ";
         for (let col of row) {
             res += col + " ";
         }
-        res += '\n';
+        res += symbols.wall + '\n';
     }
+    res += "  "+ (symbols.wall + " ").repeat(map[0].length) + "\n";
     console.log(esc.clearTerminal)
     console.log(res);
     console.log(esc.cursorHide);
