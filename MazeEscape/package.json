@@ -1,0 +1,20 @@
+{
+  "name": "maze-escape",
+  "version": "1.0.0",
+  "description": "A maze escape game for salif's CLI games collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "play": "node index.js"
+  },
+  "keywords": [
+    "game",
+    "maze-escape",
+    "cli"
+  ],
+  "author": "Seniru Pasan",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ansi-escapes": "^4.2.1"
+  }
+}
