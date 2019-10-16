@@ -1,0 +1,12 @@
+{
+	"words": ["javascript", "java", "python", "typescript", "hänga gubbe", "programmerare", "utvecklare", "kodare", "github", "google", "terminal", "maskin", "skriva manus", "server", "program", "array", "bytekod", "kommand", "funktion", "konstruktör", "argument", "visuell", "variabel", "källa", "redaktör", "microsoft", "bibliotek", "beroendet", "version", "testar", "paket", "dokumentation", "villkorlig", "slingor", "databas", "hackare", "binärt", "bitvis", "data", "algoritmer", "klient", "localhost", "objekt", "klass", "fält", "spridning", "boolean", "metoder", "faktoriell", "rekursion", "iteration", "instansiering", "deklaration", "typ", "stack", "hög", "stackoverflow", "indrag", "regex", "minne", "makros", "tangentbord", "automation", "filer", "ordbok", "symbol", "murare", "cryptex", "mästerverk", "artefakt", "pyramid", "ritual", "noetisk", "pythagorus", "uppriktig", "tempel", "papyrus", "hebreisk", "latin", "äppel", "altar", "crucifixion", "schaman", "mörkert", "skalle", "vin", "själ", "symboler", "bok"],
+	"played": "Den bokstaven har redan blivit spelad!",
+	"you_won": "Du vann!",
+	"you_lose": "Du förlorade!",
+	"word_was": "Ordet var:",
+	"one_char": "Skriv bara en bokstav!",
+	"remaining": "gissningar kvar",
+	"letters": "Spelade bokstäver:",
+	"guess": "Gissa bokstav:",
+	"hangman": "Hänga gubbe"
+}
