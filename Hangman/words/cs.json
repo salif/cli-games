@@ -1,0 +1,12 @@
+{
+	"words": ["algoritmy","oltář","jablko","pavoukovci","argumenty","pole","artefakty","automatizace","bestie","binární","bitový","kniha","boolean","nuda","bytecode","kočka","třída","klient","kóder","příkaz","podmínka","konstruktér","ukřižování","kryptex","temnota","data","databáze","deklarace","závislost","rozmístění","pohrdat","vývojář","slovník","dokumentace","pes","země","editor","podivný","elf","výbuch","výbušnina","faktoriál","hřiště","soubory","oheň","liška","funkce","hraní","github","google","hacker","oběšenec","halda","hebrejština","odsazení","instance","opakování","java","javascript","klávesnice","latina","láva","knihovna","světlo","localhost","smyčky","stroj","makra","kouzelník","zedník","veledílo","paměť","metody","microsoft","paní","myš","noetický","objekt","balíček","papyrus","mazlíček","plazma","program","programátor","pyramida","pythagorus","python","krysa","rekurze","regex","plaz","rituály","skriptování","server","šaman","upřímný","lebka","had","duše","zdroj","pavouk","stoh","stackoverflow","studio","symbolon","symoboly","chrám","terminál","testování","tygr","typ","typescript","jednorožec","proměnna","verze","víno","vizuální","voda","čarodějnice","vlk","slova"],
+	"played": "Napsané písmeno již bylo zahráno!",
+	"you_won": "Vyhráli jste!",
+	"you_lose": "Prohráli jste!",
+	"word_was": "Slovo bylo:",
+	"one_char": "Napište pouze jeden znak!",
+	"remaining": "zbývající pokusy",
+	"letters": "Zahraná písmena:",
+	"guess": "Uhádněte písmeno:",
+	"hangman": "Oběšenec"
+}
