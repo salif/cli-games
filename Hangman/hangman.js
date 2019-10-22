@@ -90,7 +90,9 @@ function initGame() {
 	}
     
     showLetter(word[0]);
-    showLetter(word[word.length - 1]);
+    showLetter(word[word.length - 1]);	
+    playedLetters.push(word[0]);
+    playedLetters.push(word[word.length - 1]);	
 }
 
 function clr(text, color) {
