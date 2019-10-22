@@ -35,12 +35,7 @@ function check(data) {
 		} else {
 			playedLetters.push(data);
 			if (word.indexOf(data) >= 0) {
-				for (var i = 1; i < word.length - 1; i++) {
-					if (word[i] === data) {
-						obfWord[i] = word[i];
-						wordl--;
-					}
-				}
+				showLetter(data);
 				if (wordl < 1) {
 					console.log(clr(`\n ${obfWord.join(" ")}`, "cian"));
 					console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
@@ -70,6 +65,16 @@ function check(data) {
 	process.stdout.write(clr(` ${db.guess} `, "yellow"));
 }
 
+/** show given letter in word */
+function showLetter(data) {
+    for (var i = 0; i < word.length; i++) {
+        if (word[i] === data) {
+            obfWord[i] = word[i];
+            wordl--;
+        }
+    }
+}
+
 /** return random word from array of words */
 function randWord() {
 	return words[Math.floor(Math.random() * words.length)];
@@ -78,12 +83,16 @@ function randWord() {
 /** create new game */
 function initGame() {
 	word = randWord().split("");
-	wordl = word.length - 2;
-	obfWord = [word[0]];
-	for (var i = 1; i < word.length - 1; i++) {
+	wordl = word.length;
+    
+	for (var i = 0; i < word.length; i++) {
 		obfWord.push("_");
 	}
-	obfWord.push(word[word.length - 1]);
+    
+    showLetter(word[0]);
+    showLetter(word[word.length - 1]);	
+    playedLetters.push(word[0]);
+    playedLetters.push(word[word.length - 1]);	
 }
 
 function clr(text, color) {
