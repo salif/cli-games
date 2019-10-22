@@ -20,17 +20,25 @@ playedLetters = []
 guessesRemaining = 8
 words = db["words"]
 
+def showLetter(data):
+	global word, wordl, obfWord
+	for i in range(len(word)):
+		if word[i] == data:
+			obfWord[i] = word[i]
+			wordl -= 1
+
 def randWord():
 	return words[randint(0, len(words))]
 
 def initGame():
-	global word, wordl, obfWord
+	global word, wordl, obfWord, playedLetters
 	word = list(randWord())
-	wordl = len(word) - 2
-	obfWord = [word[0]]
-	for i in range(1, len(word) - 1):
-		obfWord.append("_")
-	obfWord.append(word[len(word) - 1])
+	wordl = len(word)
+	obfWord = ["_"]*wordl
+	showLetter(word[0])
+	showLetter(word[-1])
+	playedLetters.append(word[0])
+	playedLetters.append(word[-1])
 
 def check(data):
 	global word, wordl, obfWord, playedLetters, guessesRemaining
@@ -40,10 +48,7 @@ def check(data):
 		else:
 			playedLetters.append(data)
 			if data in word:
-				for i in range(1, len(word) - 1):
-					if word[i] == data:
-						obfWord[i] = word[i]
-						wordl -= 1
+				showLetter(data)
 				if wordl < 1:
 					print(clr("\n " + " ".join(obfWord), "cian"))
 					print(clr("\n --------------------------------------------", "blue"))
