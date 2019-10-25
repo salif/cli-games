@@ -48,6 +48,18 @@ function isWinner(p) {
     return checkDiagonals(m) || checkRows(m) || checkColumns(m);
 }
 
+function isStuck() {
+    let isStuck = true;
+    for(let i=0; i<2; i++) {
+        for(let j=0; j<2; j++) {
+            if(board[i][j] == ' ') {
+                isStuck = false;
+            }
+        }
+    }
+    return isStuck;
+}
+
 function checkRows(m) {
     for (let row of board) {
         if (row[0] == m && row[1] == m && row[2] == m) return true;
@@ -96,6 +108,11 @@ input.on('data', data => {
            } else {
                 board[i[0]][i[1]] = player == 1 ? 'X' : 'O';
                 if (isWinner(player)) {
+                    printBoard();
+                    print(clr(`Congrats! ${player == 1 ? p1 : p2} is the winner!!!\n`, 'green'));
+                    process.exit();
+                }
+                if (isStuck()) {
                     printBoard();
                     print(clr(`Congrats! ${player == 1 ? p1 : p2} is the winner!!!\n`, 'green'));
                     process.exit();
