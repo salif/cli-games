@@ -50,8 +50,8 @@ function isWinner(p) {
 
 function isStuck() {
     let isStuck = true;
-    for(let i=0; i<2; i++) {
-        for(let j=0; j<2; j++) {
+    for(let i=0; i<3; i++) {
+        for(let j=0; j<3; j++) {
             if(board[i][j] == ' ') {
                 isStuck = false;
             }
@@ -114,7 +114,7 @@ input.on('data', data => {
                 }
                 if (isStuck()) {
                     printBoard();
-                    print(clr(`Congrats! ${player == 1 ? p1 : p2} is the winner!!!\n`, 'green'));
+                    print(clr(`Nobody wins\n`, 'yellow'));
                     process.exit();
                 }
                 player = player == 1 ? 2 : 1;
