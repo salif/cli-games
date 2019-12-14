@@ -1,0 +1,2 @@
+language = "nodejs"
+run = "npm i prompts; npm i ansi-escapes; echo what game; echo Hangman; echo MazeEscape; echo TextAdventures; echo TicTacToe; read game; node $game/index.js "
