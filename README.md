@@ -37,7 +37,7 @@ Want to contribute this project? We are happy to accept your contributions! You 
 - Making / Implementing suggestions and new features
 - Creating / Fixing bug reports
 - Improving the performance
-- [#creating-new-games](Creating new games)
+- [Creating new games](#creating-new-games)
 - Spreading the word!
 
 ## Creating new games
