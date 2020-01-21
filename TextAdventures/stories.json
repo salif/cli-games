@@ -94,6 +94,102 @@
             ]
         },
         {
+            "title": "A day in the haunted house",
+            "description": "\nYou had many friends - both good and bad. And you were too popular among them. One day your friends gave you a challenge to stay a night in the haunted house on the top of the lonely mountain.\nAccept this challenge?",
+            "answers": [
+                {
+                    "title": "I'm not gonna accept their silly challenges",
+                    "description": "\nWell you lose the challenge, also your reputation among your friends. Now they never gonna respect you!",
+                    "over": true,
+                    "win": false
+                },
+                {
+                    "title": "Sure! I'm always ready for challenges",
+                    "over": false,
+                    "description": "\nFinally the day came. You went to the freaky haunted house with the help of your friends. It looked very spooky! And you heard weird sounds of wolfs and owls outside. It's the time to get that brave decision. Would you get into the house?",
+                    "answers": [
+                        {
+                            "title": "I dont want to lose my life",
+                            "description": "\nSkipping challenges is bad. You lose your friends!",
+                            "over": true,
+                            "win": false
+                        },
+                        {
+                            "title": "Yes, let's go in!",
+                            "description": "\nYou went in. And your silly friends left you here and went home. The door closed by itself. You tried to open it but it's locked. Now you have to escape this freaky house. But you have no idea about what to do next.\nYou looked around to find a source of light and found a switch to turn on the lights. And you found few places with that dimmed light!",
+                            "over": false,
+                            "answers": [
+                                {
+                                    "title": "Go to Kitchen",
+                                    "over": false,
+                                    "description": "\nYou wondered how did you think this as a kitchen. There are only few utensils which were worn out already. To make it worse, there were lots of rats and cockroaches on the floor. You wanted to run out of the room but the door that you entered closed behind you.",
+                                    "answers": [
+                                        {
+                                            "title": "I can't get out of here anyway. Let me lose my life",
+                                            "description": "And you took a blunt knife to kill yourself. You hit yourself and died with lots of pain!",
+                                            "over": true,
+                                            "win": false
+                                        },
+                                        {
+                                            "title": "Follow the trail of those shitty creatures",
+                                            "description": "You followed them and found a died body lying out there. It seems there is something in his pocket. Get it?",
+                                            "over": false,
+                                            "answers": [
+                                                {
+                                                    "title": "Yes",
+                                                    "description": "It was a hungry zombie who was looking for a fresh brain. You lose your precise brain and dead",
+                                                    "over": true,
+                                                    "win": false
+                                                },
+                                                {
+                                                    "title": "No",
+                                                    "description": "Then you sent your hand through your own pocket to find something useful. Then you found a torch. You switched it on, and then you found a pathway to a hidden room in ground. Wanna go inside?",
+                                                    "over": false,
+                                                    "answers": [
+                                                        {
+                                                            "title": "Yes",
+                                                            "description": "It was not a room actually, but an exit! You stayed there until the morning and told your friends about the things you did. Everyone were surprised!",
+                                                            "over": true,
+                                                            "win": true
+                                                        },
+                                                        {
+                                                            "title": "No",
+                                                            "description": "By the way you wake up the sleeping zombie who was in a great hunger. You lost your brain and your precious brain!",
+                                                            "over": true,
+                                                            "win": false
+                                                        }
+                                                    ]
+                                                }                                                
+                                            ]
+                                        },
+                                        {
+                                            "title": "Eat those animals! I can't live without food",
+                                            "description": "They were tasty than you thought. But at the same time they were poisonous. You dead there!",
+                                            "over": true,
+                                            "win": false
+                                        }
+                                    ]    
+                                },
+                                {
+                                    "title": "Go to Washroom",
+                                    "description": "\nIt's sure the washroom have not been cleaned for ages. "
+                                },
+                                {
+                                    "title": "Go upstairs"
+                                },
+                                {
+                                    "title": "Go to the store room",
+                                    "over": true,
+                                    "win": false,
+                                    "description": "\nThere were lots of garbage there. You peeked inside an old pot which seemed to be valuable. But unfortunately you wake up the snake who was sleeping peacefully there and dead by it"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "title": "The unknown story",
             "description": "No story here!",
             "over": true,
