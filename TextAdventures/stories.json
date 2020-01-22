@@ -126,35 +126,35 @@
                                     "answers": [
                                         {
                                             "title": "I can't get out of here anyway. Let me lose my life",
-                                            "description": "And you took a blunt knife to kill yourself. You hit yourself and died with lots of pain!",
+                                            "description": "\nAnd you took a blunt knife to kill yourself. You hit yourself and died with lots of pain!",
                                             "over": true,
                                             "win": false
                                         },
                                         {
                                             "title": "Follow the trail of those shitty creatures",
-                                            "description": "You followed them and found a died body lying out there. It seems there is something in his pocket. Get it?",
+                                            "description": "\nYou followed them and found a died body lying out there. It seems there is something in his pocket. Get it?",
                                             "over": false,
                                             "answers": [
                                                 {
                                                     "title": "Yes",
-                                                    "description": "It was a hungry zombie who was looking for a fresh brain. You lose your precise brain and dead",
+                                                    "description": "\nIt was a hungry zombie who was looking for a fresh brain. You lose your precise brain and dead",
                                                     "over": true,
                                                     "win": false
                                                 },
                                                 {
                                                     "title": "No",
-                                                    "description": "Then you sent your hand through your own pocket to find something useful. Then you found a torch. You switched it on, and then you found a pathway to a hidden room in ground. Wanna go inside?",
+                                                    "description": "\nThen you sent your hand through your own pocket to find something useful. Then you found a torch. You switched it on, and then you found a pathway to a hidden room in ground. Wanna go inside?",
                                                     "over": false,
                                                     "answers": [
                                                         {
                                                             "title": "Yes",
-                                                            "description": "It was not a room actually, but an exit! You stayed there until the morning and told your friends about the things you did. Everyone were surprised!",
+                                                            "description": "\nIt was not a room actually, but an exit! You stayed there until the morning and told your friends about the things you did. Everyone were surprised!",
                                                             "over": true,
                                                             "win": true
                                                         },
                                                         {
                                                             "title": "No",
-                                                            "description": "By the way you wake up the sleeping zombie who was in a great hunger. You lost your brain and your precious brain!",
+                                                            "description": "\nBy the way you wake up the sleeping zombie who was in a great hunger. You lost your brain and your precious brain!",
                                                             "over": true,
                                                             "win": false
                                                         }
@@ -164,7 +164,7 @@
                                         },
                                         {
                                             "title": "Eat those animals! I can't live without food",
-                                            "description": "They were tasty than you thought. But at the same time they were poisonous. You dead there!",
+                                            "description": "\nThey were tasty than you thought. But at the same time they were poisonous. You dead there!",
                                             "over": true,
                                             "win": false
                                         }
@@ -172,10 +172,85 @@
                                 },
                                 {
                                     "title": "Go to Washroom",
-                                    "description": "\nIt's sure the washroom have not been cleaned for ages. "
+                                    "description": "\nIt's sure the washroom have not been cleaned for ages. You don't have any idea what are doing here even.",
+                                    "over": false,
+                                    "answers": [
+                                        {
+                                            "title": "Look around",
+                                            "description": "\nYou saw a window which leads to out. Though it's located quiet above. Escape?",
+                                            "over": false,
+                                            "answers": [
+                                                {
+                                                    "title": "Yes",
+                                                    "description": "\nYou tried your best to reach the window, But you accidently slipped and hit your head hard on the floor. Then you felt nothing!\n\nEhm! I mean you are dead",
+                                                    "over": true,
+                                                    "win": false
+                                                },
+                                                {
+                                                    "title": "No",
+                                                    "description": "\nAnd then you found something glittering in the bath tub. You want to touch it but your sixth sense says not to touch it",
+                                                    "over": false,
+                                                    "answers": [
+                                                        {
+                                                            "title": "I don't care. Get it!",
+                                                            "description": "\nAnd then a soul came and thanked you for freeing him from this curse. He told you everything and let you away from this house. And the good news is that this house is not haunted anymore!",
+                                                            "over": true,
+                                                            "win": true
+                                                        },
+                                                        {
+                                                            "title": "If my sixth sense says no, then no!",
+                                                            "description": "\nThat object mush have cursed! You burned because of something came from that glittering object",
+                                                            "over": true,
+                                                            "win": false
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "title": "Have a quick wash",
+                                            "description": "\nThe water was poisoned as it was not used for ages and creepy works of animals. You dead by poisoning!",
+                                            "over": true,
+                                            "win": false
+                                        },
+                                        {
+                                            "title": "Get out",
+                                            "description": "\nIt seems like a soul have sensed you when you were inside the washroom. And that bad soul started haunting you forever!",
+                                            "win": false,
+                                            "over": true
+                                        }
+                                    ]
                                 },
                                 {
-                                    "title": "Go upstairs"
+                                    "title": "Go upstairs",
+                                    "description": "\nUpstair was nothing but full of valuable objects",
+                                    "over": false,
+                                    "answers": [
+                                        {
+                                            "title": "I'm not sure about anything in this house. I'll go down",
+                                            "description": "\nActually the steps were too old that they can't carry you anymore. It break down instantly making you dead",
+                                            "over": true,
+                                            "win": false
+                                        },
+                                        {
+                                            "title": "Hey look! There's an opened window. Let's jump out of there",
+                                            "description": "\nYou managed to reach that window and jumped down. But it was too high and you had severe fractures",
+                                            "over": true,
+                                            "win": false
+                                        },
+                                        {
+                                            "title": "Hey! There's a box. Let's open it!",
+                                            "description": "\nIncredible! You found a treasure inside that box. Luckily you also found a key to leave this haunted house. And you lived a very rich life after that day",
+                                            "over": true,
+                                            "win": true
+                                        },
+                                        {
+                                            "title": "Look! There are lots of gold here! Let's grab a few!",
+                                            "description": "\nYou started grabbing one by one. Eventually you disturbed the sleep of the beasts who lived their peacefully. Now they are going to have you for the dinner",
+                                            "over": true,
+                                            "win": false
+                                        }
+                                    ]
                                 },
                                 {
                                     "title": "Go to the store room",
