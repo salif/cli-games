@@ -2,11 +2,12 @@ const readline = require('readline');
 const esc = require('ansi-escapes');
 
 // initializing the variables
-let map, snake, snakeHead, foodPos, score
+let map, snake, snakeHead, foodPos, score, interval
 
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
+// handling keypress events
 process.stdin.on('keypress', (str, key) => {
     if (key.name == 'z' && key.ctrl) {
       console.log(esc.cursorShow);
@@ -66,8 +67,9 @@ function newGame() {
 }
 
 function drawMap() {
+    // top borders
     res = "▉" + ("▉▉▉".repeat(map[0].length)) + "▉\n▉"
-
+    // drawing other parts
     for (let row of map) {
         for (let col of row) {
             if (col == 0) {
@@ -82,7 +84,7 @@ function drawMap() {
         }
         res += "▉\n▉"
     }
-
+    // bottom borders
     print(res + "▉" + ("▉▉▉".repeat(map[0].length)) + "\n")
     print("Score: " + score, true, false)
 }
@@ -112,8 +114,10 @@ function isEatingSelf() {
 }
 
 function loop() {
+    // clearing all the values in the map (setting them to 0)
     map = Array.from(Array(15), _ => Array(30).fill(0));
 
+    // snake move logic
     if (snakeHead.movingForward) {
         snakeHead.y -= 1
     } else if (snakeHead.movingDown) {
@@ -130,6 +134,7 @@ function loop() {
     
     snake[0] = [snakeHead.x, snakeHead.y]
 
+    // wall hit detetion
     if (snakeHead.x < 0) {
         gameOver("You hit the wall!")
     } else if (snakeHead.x >= map[0].length) {
@@ -139,7 +144,6 @@ function loop() {
     } else if (snakeHead.y >= 15) {
         gameOver("You hit the wall!")
     }
-    
     
     for (let segments of snake) {
         map[segments[1]][segments[0]] = 1
@@ -153,20 +157,37 @@ function loop() {
     
     map[snakeHead.y][snakeHead.x] = 2
     map[foodPos.y][foodPos.x] = 5
-        
+      
     drawMap()
 
     if (isEatingSelf()) {
         gameOver("You ate yourself")
         process.exit(0)
     }
-    
+
+    // increasing the speed of the snake if the player has passed the level (at a higher score)
+    if (score >= 80) {
+        clearInterval(interval)
+        interval = setInterval(loop, 100)
+    } else if (score >= 60) {
+        clearInterval(interval)
+        interval = setInterval(loop, 150)
+    } else if (score >= 50) {
+        clearInterval(interval)
+        interval = setInterval(loop, 200)
+    } else if (score >= 30) {
+        clearInterval(interval)
+        interval = setInterval(loop, 300)
+    } else if (score >= 10) {
+        clearInterval(interval)
+        interval = setInterval(loop, 400)
+    }
 }
 
 function main() {
     newGame()
     drawMap()
-    setInterval(loop, 400)
+    interval = setInterval(loop, 800)
 }
 
 function gameOver(msg) {
