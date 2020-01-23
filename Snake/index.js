@@ -85,6 +85,10 @@ function drawMap() {
     print(res)
 }
 
+function isEatingFood() {
+    return snakeHead.x == foodPos.x && snakeHead.y == foodPos.y
+}
+
 function loop() {
     map = Array.from(Array(15), _ => Array(30).fill(0));
 
@@ -119,6 +123,12 @@ function loop() {
         map[segments[1]][segments[0]] = 1
     }
     
+    if (isEatingFood()) {
+        snake.push([-1, -1])
+        foodPos.x = randInt(0, 29)
+        foodPos.y = randInt(0, map.length - 1)
+    }
+
     map[snakeHead.y][snakeHead.x] = 2
     map[foodPos.y][foodPos.x] = 5
 
@@ -137,6 +147,10 @@ function print(str, hide=true, clear=true) {
     }
     console.log(str);
     console.log(hide ? esc.cursorHide : esc.cursorShow);
+}
+
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 main()
