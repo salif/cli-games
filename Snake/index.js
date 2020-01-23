@@ -89,6 +89,12 @@ function isEatingFood() {
     return snakeHead.x == foodPos.x && snakeHead.y == foodPos.y
 }
 
+function isEatingSelf() {
+    return snake.find((val, index) => {
+        return index != 0 && val[0] == snakeHead.x && val[1] == snakeHead.y
+    })
+}
+
 function loop() {
     map = Array.from(Array(15), _ => Array(30).fill(0));
 
@@ -109,16 +115,20 @@ function loop() {
     snake[0] = [snakeHead.x, snakeHead.y]
 
     if (snakeHead.x < 0) {
-        snakeHead.x = map[0].length - 1
+        print('game over')
+        process.exit(0)
     } else if (snakeHead.x >= map[0].length) {
-        snakeHead.x = 0
-    // FIXME: Snake should appear on the other side when it exceeds the space
+        print('game over')
+        process.exit(0)
     } else if (snakeHead.y < 0) {
+        process.exit(0)
         snakeHead.x = 29
     } else if (snakeHead.y >= 29) {
+        process.exit(0)
         snakeHead.x = 0
     }
-
+    
+    
     for (let segments of snake) {
         map[segments[1]][segments[0]] = 1
     }
@@ -128,17 +138,23 @@ function loop() {
         foodPos.x = randInt(0, 29)
         foodPos.y = randInt(0, map.length - 1)
     }
-
+    
     map[snakeHead.y][snakeHead.x] = 2
     map[foodPos.y][foodPos.x] = 5
-
+        
     drawMap()
+
+    if (isEatingSelf()) {
+        print('eating urself')
+        process.exit(0)
+    }
+    
 }
 
 function main() {
     newGame()
     drawMap()
-    setInterval(loop, 1000)
+    setInterval(loop, 400)
 }
         
 function print(str, hide=true, clear=true) {
