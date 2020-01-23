@@ -2,7 +2,7 @@ const readline = require('readline');
 const esc = require('ansi-escapes');
 
 // initializing the variables
-let map, snake, snakeHead, foodPos
+let map, snake, snakeHead, foodPos, score
 
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
@@ -44,6 +44,7 @@ process.stdin.on('keypress', (str, key) => {
 
 
 function newGame() {
+    score = 0
     // creating a 25 x 30 map
     map = Array.from(Array(15), _ => Array(30).fill(0));
     // setting the snake in the middle
@@ -65,24 +66,25 @@ function newGame() {
 }
 
 function drawMap() {
-    res = ""
+    res = "▉" + ("▉▉▉".repeat(map[0].length)) + "▉\n▉"
 
     for (let row of map) {
         for (let col of row) {
             if (col == 0) {
                 res += "   "
             } else if (col == 1) {
-                res += " 8 "
+                res += clr(" ⬤ ", "yellow")
             } else if (col == 2) {
-                res += " O "
+                res += clr(" ⬤ ", "green")
             } else if (col == 5) {
-                res += " A "
+                res += clr(" ❤ ", "red")
             }
         }
-        res += "\n"
+        res += "▉\n▉"
     }
 
-    print(res)
+    print(res + "▉" + ("▉▉▉".repeat(map[0].length)) + "\n")
+    print("Score: " + score, true, false)
 }
 
 function isEatingFood() {
@@ -115,17 +117,13 @@ function loop() {
     snake[0] = [snakeHead.x, snakeHead.y]
 
     if (snakeHead.x < 0) {
-        print('game over')
-        process.exit(0)
+        gameOver("You hit the wall!")
     } else if (snakeHead.x >= map[0].length) {
-        print('game over')
-        process.exit(0)
+        gameOver("You hit the wall!")
     } else if (snakeHead.y < 0) {
-        process.exit(0)
-        snakeHead.x = 29
-    } else if (snakeHead.y >= 29) {
-        process.exit(0)
-        snakeHead.x = 0
+        gameOver("You hit the wall!")
+    } else if (snakeHead.y >= 15) {
+        gameOver("You hit the wall!")
     }
     
     
@@ -137,6 +135,7 @@ function loop() {
         snake.push([-1, -1])
         foodPos.x = randInt(0, 29)
         foodPos.y = randInt(0, map.length - 1)
+        score++
     }
     
     map[snakeHead.y][snakeHead.x] = 2
@@ -145,7 +144,7 @@ function loop() {
     drawMap()
 
     if (isEatingSelf()) {
-        print('eating urself')
+        gameOver("You ate yourself")
         process.exit(0)
     }
     
@@ -155,6 +154,11 @@ function main() {
     newGame()
     drawMap()
     setInterval(loop, 400)
+}
+
+function gameOver(msg) {
+    print(clr("Game over! " + msg, "red"), false, false)
+    process.exit(0)
 }
         
 function print(str, hide=true, clear=true) {
@@ -167,6 +171,11 @@ function print(str, hide=true, clear=true) {
 
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function clr(text, color) {
+	var code = { red: 91, green: 92, blue: 34, cian: 96, yellow: 93 }[color];
+	if (code) return "\x1b[" + code + "m" + text + "\x1b[0m";
 }
 
 main()
