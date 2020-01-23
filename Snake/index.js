@@ -87,6 +87,20 @@ function drawMap() {
     print("Score: " + score, true, false)
 }
 
+function setFoodPos() {
+    // searching for suitable places to set the food
+    let suitablePos = []
+    for (let row in map) {
+        for (let col in map) {
+            if (map[row][col] == " ") suitablePos.push([row, col])
+        }
+    }
+    //setting the food in one of the suitable places
+    let choosen = suitablePos[randInt(0, suitablePos.length)]
+    foodPos.x = choosen[1]
+    foodPos.y = choosen[0]
+}
+
 function isEatingFood() {
     return snakeHead.x == foodPos.x && snakeHead.y == foodPos.y
 }
@@ -133,8 +147,7 @@ function loop() {
     
     if (isEatingFood()) {
         snake.push([-1, -1])
-        foodPos.x = randInt(0, 29)
-        foodPos.y = randInt(0, map.length - 1)
+        setFoodPos()
         score++
     }
     
