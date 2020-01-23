@@ -1,0 +1,21 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "Snake game Salifm's CLI game collection",
+  "main": "index.js",
+  "dependencies": {
+    "ansi-escapes": "^4.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "play": "node index.js"
+  },
+  "keywords": [
+    "snake",
+    "cli",
+    "games"
+  ],
+  "author": "Seniru",
+  "license": "Apache-2.0"
+}
