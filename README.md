@@ -1,4 +1,5 @@
 # CLI Games
+
 > Games in the terminal
 
 [![Run on Repl.it](https://repl.it/badge/github/salifm/cli-games)](https://repl.it/@AllAwesome497/cli-games)
@@ -8,6 +9,7 @@ CLI Games is a community-driven collection of games that could be run in your te
 - Maze Escape
 - Text Adventures
 - Tic-Tac-Toe
+- Rock, Paper, Scissors
 
 *And more in the future!*
 
