@@ -1,15 +1,18 @@
 # CLI Games
+
 > Games in the terminal
 
 [![Run on Repl.it](https://repl.it/badge/github/salifm/cli-games)](https://repl.it/@AllAwesome497/cli-games)
 
 CLI Games is a community-driven collection of games that could be run in your terminal! Currently this project has many games including,
+
 - Hangman
 - Maze Escape
 - Text Adventures
 - Tic-Tac-Toe
+- Rock, Paper, Scissors
 
-*And more in the future!*
+_And more in the future!_
 
 # How to Install?
 
@@ -23,7 +26,7 @@ cd cli-games
 
 # How to Play?
 
-After cloning, run `ls` *(or `dir` on Windows)* to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
+After cloning, run `ls` _(or `dir` on Windows)_ to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
 
 **Eg:** `cd Hangman`
 
