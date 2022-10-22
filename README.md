@@ -26,7 +26,7 @@ bash install-games.sh
 ```
 
 # How to Play?
-#for windows
+# for windows
 After cloning, run `dir` to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
 
 **Eg:** `cd Hangman`
@@ -34,7 +34,7 @@ After cloning, run `dir` to get a list of available directories of games. Then n
 Read the **README** file in the respective directory to get more instruction about installation and playing.
 Most of the games support different languages (including `node-js` and `python`) and the choice is yours!
 
-#for Unix/Linux
+# for Unix/Linux
 just type
 ```sh
 bash games.sh
