@@ -43,4 +43,9 @@ case $option in
 	echo "██▄▪▐█ ▐█▀·.▐█▄▄▌      " | lolcat -s 10000
 	echo "·▀▀▀▀   ▀ •  ▀▀▀  ▀  ▀ " | lolcat -s 10000
 	break
+;;
+
+	*)
+	printf "Invalid argument, just select the game by the number"
+	break
 esac
