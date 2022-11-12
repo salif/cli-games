@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+dir=$(dirname $0)
 
 echo "[1]  Hangman " | lolcat -as 10000
 echo "[2]  MazeEscape " | lolcat -as 10000
@@ -19,10 +20,10 @@ case $option in
 	read game
 	case $game in
 		"js"|"JS"|"Js"|"jS"|"Javascript"|"javascript")
-		cd Hangman && node hangman.js
+		cd $dir/Hangman && node hangman.js
 	;;
 		"py"|"python"|"PY"|"Python")
-		cd Hangman && python3 hangman.py
+		cd $dir/Hangman && python3 hangman.py
 	;;
 		*)
 		printf "Not valid option"
@@ -30,19 +31,19 @@ case $option in
 ;;
 
 	"2")
-	cd MazeEscape && npm run play
+	cd $dir/MazeEscape && npm run play
 ;;
 
 	"3")
-	cd RockPaperScissors && python3 rockpaperscissors.py
+	cd $dir/RockPaperScissors && python3 rockpaperscissors.py
 ;;
 
 	"4")
-	cd Snake && npm run play
+	cd $dir/Snake && npm run play
 ;;
 
 	"5")
-	cd TextAdventures && npm run play
+	cd $dir/TextAdventures && npm run play
 ;;
 
 	"6")
@@ -50,10 +51,10 @@ case $option in
 	read tictactoe
 	case $tictactoe in
 		"js"|"JS"|"Js"|"jS"|"Javascript"|"javascript"|"j")
-		cd TicTacToe && node tictactoe.js
+		cd $dir/TicTacToe && node tictactoe.js
 	;;
 		"py"|"python"|"PY"|"Python"|"p")
-		cd TicTacToe && python tictactoe.py
+		cd $dir/TicTacToe && python tictactoe.py
 	;;
 		*)
 		printf "Not valid option"
