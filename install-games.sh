@@ -1,16 +1,16 @@
 #!/bin/env bash
 
 #this script will automatically install the node dependences and the python ones, it's just really simple
-text_installed="dependences installed correctly"
-text_not_installed="dependences not installed, please refer the problem log above"
+text_installed="dependencies installed correctly \n\n"
+text_not_installed="dependencies not installed, please refer the problem log above"
 
 
-printf "Installing Hangman dependences..."
-pip install pyfiglet
+printf "Installing Hangman dependencies... \n"
+pip install pyfiglet lolcat
 
 
-printf "Installing MazeEscape dependences..."
-cd MazeEscape && npm install .
+printf "Installing MazeEscape dependencies... \n"
+cd $(dirname $0)/MazeEscape && npm install .
 
 if [[ -d node_modules ]]; then
 	printf "MazeEscape $text_installed"
@@ -19,7 +19,7 @@ else
 	exit 1
 fi
 
-printf "Installing Snake dependences..."
+printf "Installing Snake dependencies... \n"
 cd ../Snake && npm install .
 
 if [[ -d node_modules ]]; then
@@ -29,7 +29,7 @@ else
 	exit 1
 fi
 
-printf "Installing TextAdventures dependences..."
+printf "Installing TextAdventures dependencies... \n"
 cd ../TextAdventures && npm install .
 
 if [[ -d node_modules ]]; then
@@ -39,8 +39,5 @@ else
 	exit 1
 fi
 
-printf "Dependences installed succesfully (or not probably lol)"
-
-#hangman
-#MazeEscape
-#Snake
+printf "Dependences installed succesfully"
+exit 0
