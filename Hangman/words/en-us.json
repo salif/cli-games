@@ -1,5 +1,6 @@
 {
 	"language": "en-us",
+	"regexp": "^[a-z]{3,}$",
 	"played": "The letter you wrote was already played!",
 	"you_won": "You won!",
 	"you_lose": "You lose!",
@@ -3111,7 +3112,6 @@
 		"jaguar",
 		"jail",
 		"jailhouse",
-		"jalape\u00f1o",
 		"jasmine",
 		"java",
 		"javascript",
@@ -3442,7 +3442,6 @@
 		"lyre",
 		"lyrics",
 		"lysine",
-		"mRNA",
 		"macadamia",
 		"macaroni",
 		"macaroon",
