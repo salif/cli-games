@@ -2,7 +2,7 @@
 
 > Games in the terminal
 
-[![Run on Repl.it](https://repl.it/badge/github/salifm/cli-games)](https://repl.it/@AllAwesome497/cli-games)
+[![Run on Repl.it](https://repl.it/badge/github/salif/cli-games)](https://repl.it/@AllAwesome497/cli-games)
 
 CLI Games is a community-driven collection of games that could be run in your terminal! Currently this project has many games including,
 - Hangman
@@ -19,7 +19,7 @@ Installation is very simple.
 
 ```bash
 #Clone the repo
-git clone https://github.com/salifm/cli-games.git
+git clone https://github.com/salif/cli-games.git
 cd cli-games
 ```
 

@@ -1,17 +1,17 @@
-const readline = require('readline');
-const esc = require('ansi-escapes');
+const readline = require('readline')
+const esc = require('ansi-escapes')
 
 // initializing the variables
 let map, snake, snakeHead, foodPos, score, interval
 
-readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
+readline.emitKeypressEvents(process.stdin)
+process.stdin.setRawMode(true)
 
 // handling keypress events
 process.stdin.on('keypress', (str, key) => {
     if (key.name == 'z' && key.ctrl) {
-      console.log(esc.cursorShow);
-      process.exit(0);
+        console.log(esc.cursorShow)
+        process.exit(0)
     } else if (key.name == "up") {
         if (!snakeHead.movingDown) {
             snakeHead.movingForward = true
@@ -47,9 +47,9 @@ process.stdin.on('keypress', (str, key) => {
 function newGame() {
     score = 0
     // creating a 25 x 30 map
-    map = Array.from(Array(15), _ => Array(30).fill(0));
+    map = Array.from(Array(15), _ => Array(30).fill(0))
     // setting the snake in the middle
-    snakeHead = {x: 12, y: 5, movingForward: true, movingDown: false, movingLeft: false, movingRight: false}
+    snakeHead = { x: 12, y: 5, movingForward: true, movingDown: false, movingLeft: false, movingRight: false }
     snake = [
         [12, 5],
         [12, 6]
@@ -59,7 +59,7 @@ function newGame() {
     map[6][12] = 2 // body
 
     // setting the food
-    foodPos = {x:5, y:3}
+    foodPos = { x: 5, y: 3 }
     map[3][5] = 5
 
     drawMap()
@@ -115,7 +115,7 @@ function isEatingSelf() {
 
 function loop() {
     // clearing all the values in the map (setting them to 0)
-    map = Array.from(Array(15), _ => Array(30).fill(0));
+    map = Array.from(Array(15), _ => Array(30).fill(0))
 
     // snake move logic
     if (snakeHead.movingForward) {
@@ -127,11 +127,11 @@ function loop() {
     } else if (snakeHead.movingRight) {
         snakeHead.x += 1
     }
-    
-    for (let i=snake.length - 1; i > 0; i--) {
-        snake[i] = snake[i-1]
+
+    for (let i = snake.length - 1; i > 0; i--) {
+        snake[i] = snake[i - 1]
     }
-    
+
     snake[0] = [snakeHead.x, snakeHead.y]
 
     // wall hit detetion
@@ -144,20 +144,20 @@ function loop() {
     } else if (snakeHead.y >= 15) {
         gameOver("You hit the wall!")
     }
-    
+
     for (let segments of snake) {
         map[segments[1]][segments[0]] = 1
     }
-    
+
     if (isEatingFood()) {
         snake.push([-1, -1])
         setFoodPos()
         score++
     }
-    
+
     map[snakeHead.y][snakeHead.x] = 2
     map[foodPos.y][foodPos.x] = 5
-      
+
     drawMap()
 
     if (isEatingSelf()) {
@@ -194,22 +194,22 @@ function gameOver(msg) {
     print(clr("Game over! " + msg, "red"), false, false)
     process.exit(0)
 }
-        
-function print(str, hide=true, clear=true) {
+
+function print(str, hide = true, clear = true) {
     if (clear) {
         console.log(esc.clearTerminal)
     }
-    console.log(str);
-    console.log(hide ? esc.cursorHide : esc.cursorShow);
+    console.log(str)
+    console.log(hide ? esc.cursorHide : esc.cursorShow)
 }
 
 function randInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function clr(text, color) {
-	var code = { red: 91, green: 92, blue: 34, cian: 96, yellow: 93 }[color];
-	if (code) return "\x1b[" + code + "m" + text + "\x1b[0m";
+    var code = { red: 91, green: 92, blue: 34, cian: 96, yellow: 93 }[color]
+    if (code) return "\x1b[" + code + "m" + text + "\x1b[0m"
 }
 
 main()

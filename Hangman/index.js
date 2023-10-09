@@ -29,6 +29,7 @@ class Hangman {
         this.input = args.input
         this.input.setEncoding('utf-8')
     }
+
     play() {
         const availChars = this.getUniqueChars(this.words)
         const randWord = () => this.words[Math.floor(Math.random() * this.words.length)]
@@ -44,6 +45,7 @@ class Hangman {
             this.guess(data.trim().toLowerCase())
         })
     }
+
     showPrompt(obfWord, msg) {
         console.log(this.clr("\n ++++++++++++++++++++++++++++++", this.game.colors.blue))
         if (msg != null) {
@@ -54,6 +56,7 @@ class Hangman {
 
         process.stdout.write(this.clr(`\n ${this.db.guess} `, this.colors.yellow))
     }
+
     getUniqueChars(arr) {
         const uniqueChars = new Set()
         for (const str of arr) {
@@ -63,6 +66,7 @@ class Hangman {
         }
         return uniqueChars
     }
+
     clr(text, color) {
         return color == null ? text : "\x1b[" + color + "m" + text + "\x1b[0m"
     }

@@ -7,19 +7,19 @@
 You have to follow these steps in order to play this game
 
 - Clone this repository to your local machine (only if you haven't cloned this before)
-   ```sh
-   git clone https://github.com/salifm/cli-games.git
+   ```bash
+   git clone https://github.com/salif/cli-games.git
    ```
 
 - Move to `MazeEscape` directory
-    ```sh
+    ```bash
     cd MazeEscape
     ```
 
--   ```sh
+-   ```bash
     npm install
     ```
--   ```sh
+-   ```bash
     npm run play
     ```
 
@@ -72,4 +72,3 @@ Before starting to create a new map, please read this guidelines.
 - You can also specify walls using `"▉"` character.
 
 - Enjoy!
-

@@ -7,19 +7,19 @@
 You have to follow these steps in order to play this game
 
 - Clone this repository to your local machine (only if you haven't cloned this before)
-   ```sh
-   git clone https://github.com/salifm/cli-games.git
+   ```bash
+   git clone https://github.com/salif/cli-games.git
    ```
 
 - Move to `TextAdventures` directory
-    ```sh
+    ```bash
     cd TextAdventures
     ```
 
--   ```sh
+-   ```bash
     npm install
     ```
--   ```sh
+-   ```bash
     npm run play
     ```
 
@@ -105,4 +105,3 @@ Before starting to create a new story, please read this guidelines.
 - You must specify `true` to the `over` key if the game is over, and otherwise `false`. If it is `true`, you must add another key called `win` and the value must be a boolean value related with victory or lose.
 - You can nest more and more options inside `answers` table as you did before.
 - Enjoy!
-

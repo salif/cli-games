@@ -1,7 +1,7 @@
 {
   "name": "snake",
   "version": "1.0.0",
-  "description": "Snake game Salifm's CLI game collection",
+  "description": "Snake game Salif's CLI game collection",
   "main": "index.js",
   "dependencies": {
     "ansi-escapes": "^4.3.0"

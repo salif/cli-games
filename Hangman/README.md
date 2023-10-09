@@ -2,40 +2,40 @@
 
 ## Play
 
-```sh
+```bash
 $ python hangman.py
 ```
 
 or 
 
-```sh
+```bash
 $ python hangman.py [language]
 ```
 
 #### Example
 
-```sh
+```bash
 $ python hangman.py pt-br
 ```
 
 ## Node.js 
 
-```sh
-$ node hangman.js
+```bash
+$ node index.js
 ```
 
 or 
 
-```sh
-$ node hangman.js [language]
+```bash
+$ node index.js [language]
 ```
 
 #### Example
 
-```sh
-$ node hangman.js pt-br
+```bash
+$ node index.js pt-br
 ```
 
 ## Contributing
 
-See [this issue](https://github.com/salifm/cli-games/issues/9)
+See [this issue](https://github.com/salif/cli-games/issues/9)
