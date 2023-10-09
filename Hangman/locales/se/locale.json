@@ -1,0 +1,12 @@
+{
+	"language": "se",
+	"played": "Den bokstaven har redan blivit spelad!",
+	"you_won": "Du vann!",
+	"you_lose": "Du förlorade!",
+	"word_was": "Ordet var:",
+	"one_char": "Skriv bara en bokstav!",
+	"remaining": "gissningar kvar",
+	"letters": "Spelade bokstäver:",
+	"guess": "Gissa bokstav:",
+	"hangman": "Hänga gubbe"
+}

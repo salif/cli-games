@@ -1,0 +1,12 @@
+{
+	"language": "de",
+	"played": "Der Buchstabe wurde von dir schon ausgewählt!",
+	"you_won": "Du hast gewonnen!",
+	"you_lose": "Du hast verloren!",
+	"word_was": "Das Wort war:",
+	"one_char": "Nur einen Buchstaben!",
+	"remaining": "verbleibende Versuche",
+	"letters": "Gewählte Buchstaben:",
+	"guess": "Wähle einen Buchstaben:",
+	"hangman": "Galgenraten"
+}

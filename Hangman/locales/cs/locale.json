@@ -1,0 +1,12 @@
+{
+	"language": "cs",
+	"played": "Napsané písmeno již bylo zahráno!",
+	"you_won": "Vyhráli jste!",
+	"you_lose": "Prohráli jste!",
+	"word_was": "Slovo bylo:",
+	"one_char": "Napište pouze jeden znak!",
+	"remaining": "zbývající pokusy",
+	"letters": "Zahraná písmena:",
+	"guess": "Uhádněte písmeno:",
+	"hangman": "Oběšenec"
+}

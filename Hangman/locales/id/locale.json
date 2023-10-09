@@ -1,0 +1,12 @@
+{
+	"language": "id",
+	"played": "Huruf yang kamu tebak sudah dimainkan!",
+	"you_won": "Kamu menang!",
+	"you_lose": "Kamu kalah!",
+	"word_was": "Kata yang dimainkan adalah:",
+	"one_char": "Satu huruf lagi!",
+	"remaining": "tebakan lagi",
+	"letters": "Huruf yang sudah ditebak:",
+	"guess": "Tebak huruf:",
+	"hangman": "Hangman"
+}

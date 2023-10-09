@@ -22,8 +22,8 @@ class Game {
 class Hangman {
     constructor(args) {
         this.language = args.language
-        this.db = args.db
-        this.words = this.db.words
+        this.db = args.locale
+        this.words = args.words.words
         this.pics = args.pics
         this.colors = args.colors
         this.input = args.input
@@ -125,14 +125,20 @@ class Hangman {
     }
 }
 
-let language = "en-us"
-const arg = process.argv[2]
-if (arg != undefined && /^[A-Za-z\-]{1,}$/.test(arg)) {
-    language = arg
+let language = "en"
+let words = "all"
+const argLanguage = process.argv[2]
+if (argLanguage != undefined && /^[A-Za-z\-]{1,}$/.test(argLanguage)) {
+    language = argLanguage
+    argWords = process.argv[3]
+    if (argWords != undefined) {
+        words = argWords
+    }
 }
 
 new Hangman({
-    db: require("./words/" + language + ".json"),
+    locale: require(`./locales/${language}/locale.json`),
+    words: require(`./locales/${language}/words/${words}.json`),
     pics: require('./hangarts.json'),
     colors: Colors,
     input: process.stdin,

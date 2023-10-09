@@ -1,0 +1,12 @@
+{
+	"language": "pt-br",
+	"played": "A letra escolhida foi usada!",
+	"you_won": "Você ganhou!",
+	"you_lose": "Você perdeu!",
+	"word_was": "A palavra era:",
+	"one_char": "Escreva apenas uma letra!",
+	"remaining": "Número de tentativas",
+	"letters": "A letra foi escolhida:",
+	"guess": "Escolha uma letra:",
+	"hangman": "Forca"
+}
