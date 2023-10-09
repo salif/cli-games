@@ -1,101 +1,134 @@
-var word = [];
-var wordl = 0;
-var obfWord = [];
-var playedLetters = [];
-var guessesRemaining = 8;
-var language = "en-us";
 
-if(process.argv.length > 2) {
-	language = process.argv[2];
+const Colors = {
+    red: 91,
+    green: 92,
+    blue: 34,
+    cian: 96,
+    yellow: 93
 }
 
-var db = require(`./words/${language}.json`);
-var pics = require('./hangarts.json');
-var words = db.words;
-
-var input = process.stdin;
-input.setEncoding('utf-8');
-
-console.log(clr(`\n     ${db.hangman}`, "green"));
-console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
-
-initGame();
-
-console.log(clr(" " + obfWord.join(" ") + "\n", "cian"));
-process.stdout.write(clr(` ${db.guess} `, "yellow"));
-
-input.on('data', function (data) {
-	check(data.trim().toLowerCase());
-});
-
-function check(data) {
-	if (/^.{1}$/i.test(data)) {
-		if (playedLetters.indexOf(data) >= 0) {
-			console.log(clr(`\n ${db.played}`, "red"));
-		} else {
-			playedLetters.push(data);
-			if (word.indexOf(data) >= 0) {
-				showLetter(data);
-				if (wordl < 1) {
-					console.log(clr(`\n ${obfWord.join(" ")}`, "cian"));
-					console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-					console.log(clr(`\n  ${db.you_won}\n`, "green"));
-					process.exit(0);
-				}
-			} else {
-				guessesRemaining -= 1;
-			}
-			if (guessesRemaining < 1) {
-                console.log(pics[0].join('\n'));
-				console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
-				console.log(clr("\n ++++++++++++++++++++++++++++++", "blue"));
-				console.log(clr(`\n  ${db.you_lose} \n`, "red"));
-				console.log(clr(`  ${db.word_was} ${word.join("")}\n`, "red"));
-				process.exit(0);
-			}
-		}
-	} else {
-		console.log(clr(`\n ${db.one_char}`, "red"));
-	}
-    console.log(pics[guessesRemaining].join('\n'));
-	console.log(clr(`\n ${obfWord.join(" ")}\n`, "cian"));
-	console.log(clr(` ${guessesRemaining} ${db.remaining}`, "green"));
-	console.log(clr(` ${db.letters} ${playedLetters.join(", ")}`, "green"));
-	console.log(clr("\n ++++++++++++++++++++++++++++++\n", "blue"));
-	process.stdout.write(clr(` ${db.guess} `, "yellow"));
+class Game {
+    constructor(word, colors, availChars) {
+        this.word = word
+        this.colors = colors
+        this.availChars = availChars
+        this.lives = 8
+        this.toGuess = 0
+        this.playedChars = new Set()
+    }
 }
 
-/** show given letter in word */
-function showLetter(data) {
-    for (var i = 0; i < word.length; i++) {
-        if (word[i] === data) {
-            obfWord[i] = word[i];
-            wordl--;
+class Hangman {
+    constructor(args) {
+        this.language = args.language
+        this.db = args.db
+        this.words = this.db.words
+        this.pics = args.pics
+        this.colors = args.colors
+        this.input = args.input
+        this.input.setEncoding('utf-8')
+    }
+    play() {
+        const availChars = this.getUniqueChars(this.words)
+        const randWord = () => this.words[Math.floor(Math.random() * this.words.length)]
+        this.game = new Game(randWord().split(""), this.colors, availChars)
+
+        console.log(this.clr(`\n     ${this.db.hangman}`, this.game.colors.green))
+
+        this.game.playedChars.add(this.game.word[0])
+        this.game.playedChars.add(this.game.word[this.game.word.length - 1])
+
+        this.showPrompt(this.obf(this.game.word, this.game.playedChars), this.pic())
+        this.input.on('data', (data) => {
+            this.guess(data.trim().toLowerCase())
+        })
+    }
+    showPrompt(obfWord, msg) {
+        console.log(this.clr("\n ++++++++++++++++++++++++++++++", this.game.colors.blue))
+        if (msg != null) {
+            console.log(msg)
+        }
+        console.log(this.clr(`\n ${this.db.letters} ${Array.from(this.game.playedChars).join(", ")}`, this.game.colors.green))
+        console.log(this.clr(`\n ${obfWord}`, this.colors.cian))
+
+        process.stdout.write(this.clr(`\n ${this.db.guess} `, this.colors.yellow))
+    }
+    getUniqueChars(arr) {
+        const uniqueChars = new Set()
+        for (const str of arr) {
+            for (const char of str) {
+                uniqueChars.add(char)
+            }
+        }
+        return uniqueChars
+    }
+    clr(text, color) {
+        return color == null ? text : "\x1b[" + color + "m" + text + "\x1b[0m"
+    }
+
+    obf(word, playedChars) {
+        const output = []
+        let toGuess = 0
+        for (const c of word) {
+            if (playedChars.has(c)) {
+                output.push(c)
+            } else {
+                toGuess += 1
+                output.push("_")
+            }
+        }
+        this.game.toGuess = toGuess
+        return output.join(" ")
+    }
+
+    pic() {
+        return "\n" + this.pics[this.game.lives].join('\n')
+    }
+
+    guess(c) {
+        if (this.game.playedChars.has(c)) {
+            this.showPrompt(this.obf(this.game.word, this.game.playedChars),
+                this.clr(`\n ${this.db.played}`, this.game.colors.red))
+        } else if (this.game.availChars.has(c)) {
+            this.game.playedChars.add(c)
+            if (this.game.word.includes(c)) {
+                const obfWord = this.obf(this.game.word, this.game.playedChars)
+                if (this.game.toGuess < 1) {
+                    console.log(this.clr("\n ++++++++++++++++++++++++++++++", this.game.colors.blue))
+                    console.log(this.clr(`\n ${this.game.word.join('')}`, this.colors.cian))
+                    console.log(this.clr(`\n ${this.db.you_won}\n`, this.game.colors.yellow))
+                    process.exit(0)
+                } else {
+                    this.showPrompt(obfWord, null)
+                }
+            } else {
+                this.game.lives -= 1
+                if (this.game.lives < 1) {
+                    console.log(this.clr("\n ++++++++++++++++++++++++++++++", this.game.colors.blue))
+                    console.log(this.clr(`\n ${this.game.word.join('')}`, this.colors.cian))
+                    console.log(this.clr(`\n ${this.db.you_lose}\n`, this.game.colors.red))
+                    process.exit(0)
+                } else {
+                    this.showPrompt(this.obf(this.game.word, this.game.playedChars), this.pic())
+                }
+            }
+        } else {
+            this.showPrompt(this.obf(this.game.word, this.game.playedChars),
+                this.clr(`\n ${this.db.one_char} `, this.game.colors.red) +
+                this.clr(`\n [${Array.from(this.game.availChars).sort().join(', ')}]`, this.colors.green))
         }
     }
 }
 
-/** return random word from array of words */
-function randWord() {
-	return words[Math.floor(Math.random() * words.length)];
+let language = "en-us"
+const arg = process.argv[2]
+if (arg != undefined && /^[A-Za-z\-]{1,}$/.test(arg)) {
+    language = arg
 }
 
-/** create new game */
-function initGame() {
-	word = randWord().split("");
-	wordl = word.length;
-    
-	for (var i = 0; i < word.length; i++) {
-		obfWord.push("_");
-	}
-    
-    showLetter(word[0]);
-    showLetter(word[word.length - 1]);	
-    playedLetters.push(word[0]);
-    playedLetters.push(word[word.length - 1]);	
-}
-
-function clr(text, color) {
-	var code = { red: 91, green: 92, blue: 34, cian: 96, yellow: 93 }[color];
-	if (code) return "\x1b[" + code + "m" + text + "\x1b[0m";
-}
+new Hangman({
+    db: require("./words/" + language + ".json"),
+    pics: require('./hangarts.json'),
+    colors: Colors,
+    input: process.stdin,
+}).play()
