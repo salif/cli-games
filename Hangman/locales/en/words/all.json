@@ -1,5 +1,5 @@
 {
-	"regexp": "^[a-z]{3,}$",
+	"regexp": "^[a-z ]{3,}$",
 	"words": [
 		"aardvark",
 		"abacus",

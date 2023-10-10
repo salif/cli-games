@@ -2,40 +2,42 @@
 
 ## Play
 
+### Node.js 
+
 ```bash
-$ python hangman.py
+node index.js
+
+# specify language:
+node index.js [language]
+# e.g.
+node index.js pt-br
+
+# specify words:
+node index.js en code
 ```
 
-or 
+### Python
 
 ```bash
-$ python hangman.py [language]
-```
-
-#### Example
-
-```bash
-$ python hangman.py pt-br
-```
-
-## Node.js 
-
-```bash
-$ node index.js
-```
-
-or 
-
-```bash
-$ node index.js [language]
-```
-
-#### Example
-
-```bash
-$ node index.js pt-br
+python hangman.py
+# or specify language:
+python hangman.py [language]
+# e.g.
+python hangman.py pt-br
 ```
 
 ## Contributing
 
-See [this issue](https://github.com/salif/cli-games/issues/9)
+### Translate
+
+```bash
+cp locales/en/locale.json locales/[language]/locale.json
+# Translate locales/[language]/locale.json
+```
+
+### Add a word list
+
+```bash
+echo '{"words": ["word 1", "word 2"]}' > locales/[language]/words/[name].json
+# Edit locales/[language]/words/[name].json
+```

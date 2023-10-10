@@ -1,4 +1,5 @@
 {
+	"regexp": "^[abcçdefgğhıijklmnoöprsştuüvyz ]{3,}$",
 	"words": [
 		"alanlar",
 		"algoritmalar",

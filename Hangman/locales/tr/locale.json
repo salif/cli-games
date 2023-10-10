@@ -1,9 +1,8 @@
 {
-	"language": "tr-tr",
+	"language": "Türkçe",
 	"played": "Yazdığın harf zaten kullanıldı!",
 	"you_won": "Kazandın!",
 	"you_lose": "Kaybettin!",
-	"word_was": "Kelime şuydu:",
 	"one_char": "Sadece bir karakter yaz!",
 	"remaining": "Kalan tahminler",
 	"letters": "Kullanılmış harfler:",

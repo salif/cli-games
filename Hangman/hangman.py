@@ -62,8 +62,8 @@ def check(data):
 			if guessesRemaining < 1:
 				print(clr("\n " + " ".join(obfWord) + "\n", "cian"))
 				print(clr("\n --------------------------------------------", "blue"))
-				print(clr("\n  " + db["you_lose"] + " \n", "red"))
-				print(clr("  " + db["word_was"] + " " + "".join(word) + "\n", "red"))
+				print(clr("\n " + "".join(word), "cian"))
+				print(clr("\n " + db["you_lose"] + "\n", "red"))
 				sys.exit()
 	else:
 		print(clr("\n " + db["one_char"], "red"))

@@ -1,9 +1,8 @@
 {
-	"language": "lt-lt",
+	"language": "lt",
 	"played": "Jūsų įvesta raidė jau buvo pateikta!",
 	"you_won": "Jūs laimėjote!",
 	"you_lose": "Jūs pralaimėjote!",
-	"word_was": "Žodis buvo:",
 	"one_char": "Įveskite tik vieną simbolį!",
 	"remaining": "likę spėjimai",
 	"letters": "Jau pateiktos raidės:",

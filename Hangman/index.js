@@ -77,6 +77,8 @@ class Hangman {
         for (const c of word) {
             if (playedChars.has(c)) {
                 output.push(c)
+            } else if (c === " ") {
+                output.push(c)
             } else {
                 toGuess += 1
                 output.push("_")
@@ -128,7 +130,7 @@ class Hangman {
 let language = "en"
 let words = "all"
 const argLanguage = process.argv[2]
-if (argLanguage != undefined && /^[A-Za-z\-]{1,}$/.test(argLanguage)) {
+if (argLanguage != undefined && /^[A-Za-z\-\_]{1,}$/.test(argLanguage)) {
     language = argLanguage
     argWords = process.argv[3]
     if (argWords != undefined) {

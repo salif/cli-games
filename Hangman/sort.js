@@ -20,6 +20,6 @@ db.words.forEach(word => {
     }
     newWords.add(word)
 })
-const words = Array.from(newWords).sort()
+db.words = Array.from(newWords).sort()
 
 fs.writeFileSync(words_file, JSON.stringify(db, null, "\t"))
