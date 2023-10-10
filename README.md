@@ -21,16 +21,25 @@ Installation is very simple.
 #Clone the repo
 git clone https://github.com/salif/cli-games.git
 cd cli-games
+#install the dependences for the games (for Unix systems and Lunix)
+bash install-games.sh
 ```
 
 # How to Play?
-
-After cloning, run `ls` *(or `dir` on Windows)* to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
+# for windows
+After cloning, run `dir` to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
 
 **Eg:** `cd Hangman`
 
 Read the **README** file in the respective directory to get more instruction about installation and playing.
 Most of the games support different languages (including `node-js` and `python`) and the choice is yours!
+
+# for Unix/Linux
+just type
+```sh
+bash games.sh
+```
+and select the game by the number or 'e' for exit. If a game has a JS and Python version, for example *TicTacToe* it will automatically run the python one. if you like more the JS version, just change in games.sh the *python3 name.py* part to *npm run play*. for TicTacToe instead is *node tictactoe.js*
 
 # Contributing
 
