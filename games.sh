@@ -20,7 +20,7 @@ case $option in
 	read game
 	case $game in
 		"js"|"JS"|"Js"|"jS"|"Javascript"|"javascript")
-		cd $dir/Hangman && node hangman.js
+		cd $dir/Hangman && node index.js
 	;;
 		"py"|"python"|"PY"|"Python")
 		cd $dir/Hangman && python3 hangman.py
@@ -51,7 +51,7 @@ case $option in
 	read tictactoe
 	case $tictactoe in
 		"js"|"JS"|"Js"|"jS"|"Javascript"|"javascript"|"j")
-		cd $dir/TicTacToe && node tictactoe.js
+		cd $dir/TicTacToe && node index.js
 	;;
 		"py"|"python"|"PY"|"Python"|"p")
 		cd $dir/TicTacToe && python tictactoe.py

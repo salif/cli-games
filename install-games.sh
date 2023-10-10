@@ -6,7 +6,7 @@ text_not_installed="dependencies not installed, please refer the problem log abo
 
 
 printf "Installing Hangman dependencies... \n"
-pip install pyfiglet lolcat
+pip install -r requirements.txt
 
 
 printf "Installing MazeEscape dependencies... \n"
@@ -39,5 +39,5 @@ else
 	exit 1
 fi
 
-printf "Dependences installed succesfully"
+printf "Dependences installed succesfully\n"
 exit 0

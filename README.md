@@ -13,7 +13,7 @@ CLI Games is a community-driven collection of games that could be run in your te
 
 *And more in the future!*
 
-# How to Install?
+## How to Install?
 
 Installation is very simple.
 
@@ -25,8 +25,10 @@ cd cli-games
 bash install-games.sh
 ```
 
-# How to Play?
-### for windows
+## How to Play?
+
+### for Windows
+
 After cloning, run `dir` to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
 
 **Eg:** `cd Hangman`
@@ -35,13 +37,14 @@ Read the **README** file in the respective directory to get more instruction abo
 Most of the games support different languages (including `node-js` and `python`) and the choice is yours!
 
 ### for Unix/Linux
+
 just type
-```sh
+```bash
 bash games.sh
 ```
 and select the game by the number or 'e' for exit. If a game has a JS and Python version, you can choose which one you prefer you to play
 
-# Contributing
+## Contributing
 
 Want to contribute this project? We are happy to accept your contributions! You can do the following to contribute us
 
@@ -51,7 +54,7 @@ Want to contribute this project? We are happy to accept your contributions! You 
 - [Creating new games](#creating-new-games)
 - Spreading the word!
 
-## Creating new games
+### Creating new games
 
 Before creating a new game, please check if it is available already, or somebody is working on creating that game. Then make sure to create a new issue to make sure others are OK with it. If you got approval for your suggestion, then move one! Code your game and create a PR with the new changes. We'll be happy to introduce your new game :smile:
 
