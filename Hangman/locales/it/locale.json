@@ -1,0 +1,11 @@
+{
+	"language": "it",
+	"played": "Questa lettera è già stata inserita!",
+	"you_won": "Hai vinto!",
+	"you_lose": "Hai perso!",
+	"one_char": "Scrivi solo una lettera!",
+	"remaining": "tentativi rimasti",
+	"letters": "Lettere già inserite:",
+	"guess": "Inserisci una lettera:",
+	"hangman": "L'impiccato"
+}

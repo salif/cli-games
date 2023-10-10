@@ -1,0 +1,11 @@
+{
+	"language": "lt",
+	"played": "Jūsų įvesta raidė jau buvo pateikta!",
+	"you_won": "Jūs laimėjote!",
+	"you_lose": "Jūs pralaimėjote!",
+	"one_char": "Įveskite tik vieną simbolį!",
+	"remaining": "likę spėjimai",
+	"letters": "Jau pateiktos raidės:",
+	"guess": "Spėkite raidę:",
+	"hangman": "Kartuvės"
+}

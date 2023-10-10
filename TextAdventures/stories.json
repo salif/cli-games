@@ -1,275 +1,275 @@
 {
-    "stories": [
-        {
-            "title": "The hello world story",
-            "description": "\nOnce upon a time - not very long ago - lived a random citizen called Eric. He didn't show interest in anything at all! One day some of his nerdy friends invited him for an event. Actually it was about a technology exhibtion. Would you make Eric go to that event on that day?\n",
-            "answers": [
-                {
-                    "title": "Yes",
-                    "description": "\nGreat! On that day you went there with a fresh-looking suite for the sake of your sakes. Although it was not much dull for Eric that day. He found and made many new pals. Also there were some rooms that are open for the exhibition. There were many rooms too!\n",
-                    "over": false,
-                    "answers": [
-                        {
-                            "title": "Just stay and chat with your pals",
-                            "description": "\nNice chat! But all of your day ended just like that. You feel sleepy now - and of course the exhibition was over. Go to the bed buddy :D\n",
-                            "over": true,
-                            "win": false
-                        },
-                        {
-                            "title": "Go to the gaming centre",
-                            "description": "\nIncredible! You beat many of your friends. But you made one wrong decision. You started betting and returned home with no money ;(\n",
-                            "over": true,
-                            "win": false
-                        },
-                        {
-                            "title": "Go to the cafe",
-                            "description": "\nThe food were delicious! But they were prepared with no hygienic measures. So you had to meet the doctor and do nothing after that. Choose wisely next time!\n",
-                            "over": true,
-                            "win": false
-                        },
-                        {
-                            "title": "Go to Programmer arcade",
-                            "description": "\nYou found that this room is very strange and you want to leave it very soon. But something tell that you stay there. Would you?\n",
-                            "over": false,
-                            "answers": [
-                                {
-                                    "title": "Stay here",
-                                    "description": "\nIt was very hard to stay there until you heard a description about programming. You feel little interest about it! Then the committe announced that they are giving lessons for novice programmers distributed some applications for the people who would like to join. What would you like to learn?",
-                                    "over": false,
-                                    "answers": [
-                                        {
-                                            "title": "Java",
-                                            "description": "\nJava runs on more that 3 billion devices - they said. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": true,
-                                            "win": true
-                                        },
-                                        {
-                                            "title": "Javascript",
-                                            "description": "\nYou quickly realised JS is just an awesome language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": true,
-                                            "win": true
-                                        },
-                                        {
-                                            "title": "Python",
-                                            "description": "\nThe most popular programming language in the world. You wonder how a reptile can change the world :D Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": true,
-                                            "win": true
-                                        },
-                                        {
-                                            "title": "Assembly",
-                                            "description": "\nAssembly is like the core of many things - including programming languages and OS. But this is no good for beginners. You fell discouraged and started hating programming :(",
-                                            "over": true,
-                                            "win": false
-                                        },
-                                        {
-                                            "title": "C++",
-                                            "description": "\nIt seems to be hard. But you started loving it! Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": true,
-                                            "win": true
-                                        },
-                                        {
-                                            "title": "Lua",
-                                            "description": "\nLua - a small but a powerful language. You quickly got the language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
-                                            "over": true,
-                                            "win": true
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": "Get out soon",
-                                    "description": "\nHuh? Bad choice you made. Better luck next time!",
-                                    "over": true,
-                                    "win": false
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "No",
-                    "description": "\nSleepy monster! Just stay there for your entire life ....",
-                    "over": true,
-                    "win": false
-                }
-            ]
-        },
-        {
-            "title": "A day in the haunted house",
-            "description": "\nYou had many friends - both good and bad. And you were too popular among them. One day your friends gave you a challenge to stay a night in the haunted house on the top of the lonely mountain.\nAccept this challenge?",
-            "answers": [
-                {
-                    "title": "I'm not gonna accept their silly challenges",
-                    "description": "\nWell you lose the challenge, also your reputation among your friends. Now they never gonna respect you!",
-                    "over": true,
-                    "win": false
-                },
-                {
-                    "title": "Sure! I'm always ready for challenges",
-                    "over": false,
-                    "description": "\nFinally the day came. You went to the freaky haunted house with the help of your friends. It looked very spooky! And you heard weird sounds of wolfs and owls outside. It's the time to get that brave decision. Would you get into the house?",
-                    "answers": [
-                        {
-                            "title": "I dont want to lose my life",
-                            "description": "\nSkipping challenges is bad. You lose your friends!",
-                            "over": true,
-                            "win": false
-                        },
-                        {
-                            "title": "Yes, let's go in!",
-                            "description": "\nYou went in. And your silly friends left you here and went home. The door closed by itself. You tried to open it but it's locked. Now you have to escape this freaky house. But you have no idea about what to do next.\nYou looked around to find a source of light and found a switch to turn on the lights. And you found few places with that dimmed light!",
-                            "over": false,
-                            "answers": [
-                                {
-                                    "title": "Go to Kitchen",
-                                    "over": false,
-                                    "description": "\nYou wondered how did you think this as a kitchen. There are only few utensils which were worn out already. To make it worse, there were lots of rats and cockroaches on the floor. You wanted to run out of the room but the door that you entered closed behind you.",
-                                    "answers": [
-                                        {
-                                            "title": "I can't get out of here anyway. Let me lose my life",
-                                            "description": "\nAnd you took a blunt knife to kill yourself. You hit yourself and died with lots of pain!",
-                                            "over": true,
-                                            "win": false
-                                        },
-                                        {
-                                            "title": "Follow the trail of those shitty creatures",
-                                            "description": "\nYou followed them and found a died body lying out there. It seems there is something in his pocket. Get it?",
-                                            "over": false,
-                                            "answers": [
-                                                {
-                                                    "title": "Yes",
-                                                    "description": "\nIt was a hungry zombie who was looking for a fresh brain. You lose your precise brain and dead",
-                                                    "over": true,
-                                                    "win": false
-                                                },
-                                                {
-                                                    "title": "No",
-                                                    "description": "\nThen you sent your hand through your own pocket to find something useful. Then you found a torch. You switched it on, and then you found a pathway to a hidden room in ground. Wanna go inside?",
-                                                    "over": false,
-                                                    "answers": [
-                                                        {
-                                                            "title": "Yes",
-                                                            "description": "\nIt was not a room actually, but an exit! You stayed there until the morning and told your friends about the things you did. Everyone were surprised!",
-                                                            "over": true,
-                                                            "win": true
-                                                        },
-                                                        {
-                                                            "title": "No",
-                                                            "description": "\nBy the way you wake up the sleeping zombie who was in a great hunger. You lost your brain and your precious brain!",
-                                                            "over": true,
-                                                            "win": false
-                                                        }
-                                                    ]
-                                                }                                                
-                                            ]
-                                        },
-                                        {
-                                            "title": "Eat those animals! I can't live without food",
-                                            "description": "\nThey were tasty than you thought. But at the same time they were poisonous. You dead there!",
-                                            "over": true,
-                                            "win": false
-                                        }
-                                    ]    
-                                },
-                                {
-                                    "title": "Go to Washroom",
-                                    "description": "\nIt's sure the washroom have not been cleaned for ages. You don't have any idea what are doing here even.",
-                                    "over": false,
-                                    "answers": [
-                                        {
-                                            "title": "Look around",
-                                            "description": "\nYou saw a window which leads to out. Though it's located quiet above. Escape?",
-                                            "over": false,
-                                            "answers": [
-                                                {
-                                                    "title": "Yes",
-                                                    "description": "\nYou tried your best to reach the window, But you accidently slipped and hit your head hard on the floor. Then you felt nothing!\n\nEhm! I mean you are dead",
-                                                    "over": true,
-                                                    "win": false
-                                                },
-                                                {
-                                                    "title": "No",
-                                                    "description": "\nAnd then you found something glittering in the bath tub. You want to touch it but your sixth sense says not to touch it",
-                                                    "over": false,
-                                                    "answers": [
-                                                        {
-                                                            "title": "I don't care. Get it!",
-                                                            "description": "\nAnd then a soul came and thanked you for freeing him from this curse. He told you everything and let you away from this house. And the good news is that this house is not haunted anymore!",
-                                                            "over": true,
-                                                            "win": true
-                                                        },
-                                                        {
-                                                            "title": "If my sixth sense says no, then no!",
-                                                            "description": "\nThat object mush have cursed! You burned because of something came from that glittering object",
-                                                            "over": true,
-                                                            "win": false
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "title": "Have a quick wash",
-                                            "description": "\nThe water was poisoned as it was not used for ages and creepy works of animals. You dead by poisoning!",
-                                            "over": true,
-                                            "win": false
-                                        },
-                                        {
-                                            "title": "Get out",
-                                            "description": "\nIt seems like a soul have sensed you when you were inside the washroom. And that bad soul started haunting you forever!",
-                                            "win": false,
-                                            "over": true
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": "Go upstairs",
-                                    "description": "\nUpstair was nothing but full of valuable objects",
-                                    "over": false,
-                                    "answers": [
-                                        {
-                                            "title": "I'm not sure about anything in this house. I'll go down",
-                                            "description": "\nActually the steps were too old that they can't carry you anymore. It break down instantly making you dead",
-                                            "over": true,
-                                            "win": false
-                                        },
-                                        {
-                                            "title": "Hey look! There's an opened window. Let's jump out of there",
-                                            "description": "\nYou managed to reach that window and jumped down. But it was too high and you had severe fractures",
-                                            "over": true,
-                                            "win": false
-                                        },
-                                        {
-                                            "title": "Hey! There's a box. Let's open it!",
-                                            "description": "\nIncredible! You found a treasure inside that box. Luckily you also found a key to leave this haunted house. And you lived a very rich life after that day",
-                                            "over": true,
-                                            "win": true
-                                        },
-                                        {
-                                            "title": "Look! There are lots of gold here! Let's grab a few!",
-                                            "description": "\nYou started grabbing one by one. Eventually you disturbed the sleep of the beasts who lived their peacefully. Now they are going to have you for the dinner",
-                                            "over": true,
-                                            "win": false
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": "Go to the store room",
-                                    "over": true,
-                                    "win": false,
-                                    "description": "\nThere were lots of garbage there. You peeked inside an old pot which seemed to be valuable. But unfortunately you wake up the snake who was sleeping peacefully there and dead by it"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "title": "The unknown story",
-            "description": "No story here!",
-            "over": true,
-            "win": false
-        }
-    ],
-    "over": false
+	"stories": [
+		{
+			"title": "The hello world story",
+			"description": "\nOnce upon a time - not very long ago - lived a random citizen called Eric. He didn't show interest in anything at all! One day some of his nerdy friends invited him for an event. Actually it was about a technology exhibtion. Would you make Eric go to that event on that day?\n",
+			"answers": [
+				{
+					"title": "Yes",
+					"description": "\nGreat! On that day you went there with a fresh-looking suite for the sake of your sakes. Although it was not much dull for Eric that day. He found and made many new pals. Also there were some rooms that are open for the exhibition. There were many rooms too!\n",
+					"over": false,
+					"answers": [
+						{
+							"title": "Just stay and chat with your pals",
+							"description": "\nNice chat! But all of your day ended just like that. You feel sleepy now - and of course the exhibition was over. Go to the bed buddy :D\n",
+							"over": true,
+							"win": false
+						},
+						{
+							"title": "Go to the gaming centre",
+							"description": "\nIncredible! You beat many of your friends. But you made one wrong decision. You started betting and returned home with no money ;(\n",
+							"over": true,
+							"win": false
+						},
+						{
+							"title": "Go to the cafe",
+							"description": "\nThe food were delicious! But they were prepared with no hygienic measures. So you had to meet the doctor and do nothing after that. Choose wisely next time!\n",
+							"over": true,
+							"win": false
+						},
+						{
+							"title": "Go to Programmer arcade",
+							"description": "\nYou found that this room is very strange and you want to leave it very soon. But something tell that you stay there. Would you?\n",
+							"over": false,
+							"answers": [
+								{
+									"title": "Stay here",
+									"description": "\nIt was very hard to stay there until you heard a description about programming. You feel little interest about it! Then the committe announced that they are giving lessons for novice programmers distributed some applications for the people who would like to join. What would you like to learn?",
+									"over": false,
+									"answers": [
+										{
+											"title": "Java",
+											"description": "\nJava runs on more that 3 billion devices - they said. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
+											"over": true,
+											"win": true
+										},
+										{
+											"title": "Javascript",
+											"description": "\nYou quickly realised JS is just an awesome language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
+											"over": true,
+											"win": true
+										},
+										{
+											"title": "Python",
+											"description": "\nThe most popular programming language in the world. You wonder how a reptile can change the world :D Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
+											"over": true,
+											"win": true
+										},
+										{
+											"title": "Assembly",
+											"description": "\nAssembly is like the core of many things - including programming languages and OS. But this is no good for beginners. You fell discouraged and started hating programming :(",
+											"over": true,
+											"win": false
+										},
+										{
+											"title": "C++",
+											"description": "\nIt seems to be hard. But you started loving it! Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
+											"over": true,
+											"win": true
+										},
+										{
+											"title": "Lua",
+											"description": "\nLua - a small but a powerful language. You quickly got the language. Finally you managed to write your first program. Then you run it with a big hope. And finally it displayed 'hello world' in your console. You gazed at it very happily!",
+											"over": true,
+											"win": true
+										}
+									]
+								},
+								{
+									"title": "Get out soon",
+									"description": "\nHuh? Bad choice you made. Better luck next time!",
+									"over": true,
+									"win": false
+								}
+							]
+						}
+					]
+				},
+				{
+					"title": "No",
+					"description": "\nSleepy monster! Just stay there for your entire life ....",
+					"over": true,
+					"win": false
+				}
+			]
+		},
+		{
+			"title": "A day in the haunted house",
+			"description": "\nYou had many friends - both good and bad. And you were too popular among them. One day your friends gave you a challenge to stay a night in the haunted house on the top of the lonely mountain.\nAccept this challenge?",
+			"answers": [
+				{
+					"title": "I'm not gonna accept their silly challenges",
+					"description": "\nWell you lose the challenge, also your reputation among your friends. Now they never gonna respect you!",
+					"over": true,
+					"win": false
+				},
+				{
+					"title": "Sure! I'm always ready for challenges",
+					"over": false,
+					"description": "\nFinally the day came. You went to the freaky haunted house with the help of your friends. It looked very spooky! And you heard weird sounds of wolfs and owls outside. It's the time to get that brave decision. Would you get into the house?",
+					"answers": [
+						{
+							"title": "I dont want to lose my life",
+							"description": "\nSkipping challenges is bad. You lose your friends!",
+							"over": true,
+							"win": false
+						},
+						{
+							"title": "Yes, let's go in!",
+							"description": "\nYou went in. And your silly friends left you here and went home. The door closed by itself. You tried to open it but it's locked. Now you have to escape this freaky house. But you have no idea about what to do next.\nYou looked around to find a source of light and found a switch to turn on the lights. And you found few places with that dimmed light!",
+							"over": false,
+							"answers": [
+								{
+									"title": "Go to Kitchen",
+									"over": false,
+									"description": "\nYou wondered how did you think this as a kitchen. There are only few utensils which were worn out already. To make it worse, there were lots of rats and cockroaches on the floor. You wanted to run out of the room but the door that you entered closed behind you.",
+									"answers": [
+										{
+											"title": "I can't get out of here anyway. Let me lose my life",
+											"description": "\nAnd you took a blunt knife to kill yourself. You hit yourself and died with lots of pain!",
+											"over": true,
+											"win": false
+										},
+										{
+											"title": "Follow the trail of those shitty creatures",
+											"description": "\nYou followed them and found a died body lying out there. It seems there is something in his pocket. Get it?",
+											"over": false,
+											"answers": [
+												{
+													"title": "Yes",
+													"description": "\nIt was a hungry zombie who was looking for a fresh brain. You lose your precise brain and dead",
+													"over": true,
+													"win": false
+												},
+												{
+													"title": "No",
+													"description": "\nThen you sent your hand through your own pocket to find something useful. Then you found a torch. You switched it on, and then you found a pathway to a hidden room in ground. Wanna go inside?",
+													"over": false,
+													"answers": [
+														{
+															"title": "Yes",
+															"description": "\nIt was not a room actually, but an exit! You stayed there until the morning and told your friends about the things you did. Everyone were surprised!",
+															"over": true,
+															"win": true
+														},
+														{
+															"title": "No",
+															"description": "\nBy the way you wake up the sleeping zombie who was in a great hunger. You lost your brain and your precious brain!",
+															"over": true,
+															"win": false
+														}
+													]
+												}
+											]
+										},
+										{
+											"title": "Eat those animals! I can't live without food",
+											"description": "\nThey were tasty than you thought. But at the same time they were poisonous. You dead there!",
+											"over": true,
+											"win": false
+										}
+									]
+								},
+								{
+									"title": "Go to Washroom",
+									"description": "\nIt's sure the washroom have not been cleaned for ages. You don't have any idea what are doing here even.",
+									"over": false,
+									"answers": [
+										{
+											"title": "Look around",
+											"description": "\nYou saw a window which leads to out. Though it's located quiet above. Escape?",
+											"over": false,
+											"answers": [
+												{
+													"title": "Yes",
+													"description": "\nYou tried your best to reach the window, But you accidently slipped and hit your head hard on the floor. Then you felt nothing!\n\nEhm! I mean you are dead",
+													"over": true,
+													"win": false
+												},
+												{
+													"title": "No",
+													"description": "\nAnd then you found something glittering in the bath tub. You want to touch it but your sixth sense says not to touch it",
+													"over": false,
+													"answers": [
+														{
+															"title": "I don't care. Get it!",
+															"description": "\nAnd then a soul came and thanked you for freeing him from this curse. He told you everything and let you away from this house. And the good news is that this house is not haunted anymore!",
+															"over": true,
+															"win": true
+														},
+														{
+															"title": "If my sixth sense says no, then no!",
+															"description": "\nThat object mush have cursed! You burned because of something came from that glittering object",
+															"over": true,
+															"win": false
+														}
+													]
+												}
+											]
+										},
+										{
+											"title": "Have a quick wash",
+											"description": "\nThe water was poisoned as it was not used for ages and creepy works of animals. You dead by poisoning!",
+											"over": true,
+											"win": false
+										},
+										{
+											"title": "Get out",
+											"description": "\nIt seems like a soul have sensed you when you were inside the washroom. And that bad soul started haunting you forever!",
+											"win": false,
+											"over": true
+										}
+									]
+								},
+								{
+									"title": "Go upstairs",
+									"description": "\nUpstair was nothing but full of valuable objects",
+									"over": false,
+									"answers": [
+										{
+											"title": "I'm not sure about anything in this house. I'll go down",
+											"description": "\nActually the steps were too old that they can't carry you anymore. It break down instantly making you dead",
+											"over": true,
+											"win": false
+										},
+										{
+											"title": "Hey look! There's an opened window. Let's jump out of there",
+											"description": "\nYou managed to reach that window and jumped down. But it was too high and you had severe fractures",
+											"over": true,
+											"win": false
+										},
+										{
+											"title": "Hey! There's a box. Let's open it!",
+											"description": "\nIncredible! You found a treasure inside that box. Luckily you also found a key to leave this haunted house. And you lived a very rich life after that day",
+											"over": true,
+											"win": true
+										},
+										{
+											"title": "Look! There are lots of gold here! Let's grab a few!",
+											"description": "\nYou started grabbing one by one. Eventually you disturbed the sleep of the beasts who lived their peacefully. Now they are going to have you for the dinner",
+											"over": true,
+											"win": false
+										}
+									]
+								},
+								{
+									"title": "Go to the store room",
+									"over": true,
+									"win": false,
+									"description": "\nThere were lots of garbage there. You peeked inside an old pot which seemed to be valuable. But unfortunately you wake up the snake who was sleeping peacefully there and dead by it"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"title": "The unknown story",
+			"description": "No story here!",
+			"over": true,
+			"win": false
+		}
+	],
+	"over": false
 }

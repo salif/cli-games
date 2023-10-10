@@ -4,21 +4,24 @@ from random import randint
 import json
 import pyfiglet
 
-language = "en-us"
+language = "en"
 if(len(sys.argv) > 1):
 	language = sys.argv[1]
 
 print(pyfiglet.figlet_format("Hello!"))
 
-with open("words/" + language + ".json") as json_file:
+with open("locales/" + language + "/locale.json") as json_file:
 	db = json.load(json_file)
+
+with open("locales/" + language + "/words/all.json") as json_file:
+	db_words = json.load(json_file)
 
 word = []
 wordl = 0
 obfWord = []
 playedLetters = []
 guessesRemaining = 8
-words = db["words"]
+words = db_words["words"]
 
 def showLetter(data):
 	global word, wordl, obfWord
@@ -59,8 +62,8 @@ def check(data):
 			if guessesRemaining < 1:
 				print(clr("\n " + " ".join(obfWord) + "\n", "cian"))
 				print(clr("\n --------------------------------------------", "blue"))
-				print(clr("\n  " + db["you_lose"] + " \n", "red"))
-				print(clr("  " + db["word_was"] + " " + "".join(word) + "\n", "red"))
+				print(clr("\n " + "".join(word), "cian"))
+				print(clr("\n " + db["you_lose"] + "\n", "red"))
 				sys.exit()
 	else:
 		print(clr("\n " + db["one_char"], "red"))

@@ -1,0 +1,11 @@
+{
+	"language": "es",
+	"played": "¡La letra que escribiste ya fue usada!",
+	"you_won": "¡Ganaste!",
+	"you_lose": "¡Perdiste!",
+	"one_char": "¡Escribe sólo un caracter!",
+	"remaining": "letras por adivinar",
+	"letters": "Letras que ya se usaron:",
+	"guess": "Adivina la letra:",
+	"hangman": "Ahorcado"
+}

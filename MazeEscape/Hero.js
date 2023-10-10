@@ -16,7 +16,7 @@ class Hero {
         }
     }
 
-    moveDown()  {
+    moveDown() {
         if (this.canGo(this.x, this.y + 1)) {
             this.leave();
             this.goto(this.x, this.y + 1);
@@ -46,7 +46,7 @@ class Hero {
         }
     }
 
-    leave()  {
+    leave() {
         this.map[this.y][this.x] = " ";
     }
 
@@ -55,7 +55,7 @@ class Hero {
     }
 
     isWinningPosition(x, y) {
-        return this.map[y][x] == symbols.door
+        return this.map[y][x] == symbols.door;
     }
 
     hasWon() {

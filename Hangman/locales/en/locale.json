@@ -1,0 +1,11 @@
+{
+	"language": "English",
+	"played": "The letter you wrote was already played!",
+	"you_won": "You won!",
+	"you_lose": "You lose!",
+	"one_char": "Write just one character!",
+	"remaining": "guesses remaining",
+	"letters": "Letters already played:",
+	"guess": "Guess letter:",
+	"hangman": "Hangman"
+}

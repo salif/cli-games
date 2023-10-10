@@ -1,14 +1,25 @@
-var fs = require("fs")
-var language = "en-us";
+#!/usr/bin/env node
 
-if(process.argv.length > 2) {
-	language = process.argv[2];
+const fs = require("fs")
+let words_file = "./locales/en/words/all.json"
+
+if (process.argv.length > 2) {
+    words_file = process.argv[2]
 }
 
-var db = require(`./words/${language}.json`);
-db.words = db.words.sort();
-fs.writeFile(`./words/${language}.json`, JSON.stringify(db, null, "\t"), function(err) {
-    if (err) {
-        console.log(err);
+const db = require(words_file)
+const newWords = new Set()
+const testRegex = db.regexp != undefined
+const regexp = new RegExp(db.regexp)
+
+db.words.forEach(word => {
+    if (testRegex) {
+        if (!regexp.test(word)) {
+            console.log(word)
+        }
     }
-});
+    newWords.add(word)
+})
+db.words = Array.from(newWords).sort()
+
+fs.writeFileSync(words_file, JSON.stringify(db, null, "\t"))

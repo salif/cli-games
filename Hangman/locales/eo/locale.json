@@ -1,0 +1,11 @@
+{
+	"language": "Esperanto",
+	"played": "La enmetita litero jam estis ludita!",
+	"you_won": "Vi venkis!",
+	"you_lose": "Vi malvenkis!",
+	"one_char": "Enigu valida litero!",
+	"remaining": "restantaj eniroj",
+	"letters": "Luditaj literoj:",
+	"guess": "Divenu literon:",
+	"hangman": "Pendumo"
+}
