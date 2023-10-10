@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hangman</title>
+	<style>
+		body {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		textarea {
+			width: 95%;
+			height: 95vh;
+			margin: 0;
+		}
+
+	</style>
+	<script src="Hangman.js"></script>
+</head>
+
+<body>
+	<textarea id="terminal"></textarea>
+	<script>
+		let inputFunction = () => { }
+		const terminal = document.getElementById("terminal")
+		terminal.value = ""
+		terminal.addEventListener("keyup", (evt) => {
+			if (evt.key) {
+				inputFunction(evt.key)
+			}
+			terminal.scrollTop = terminal.scrollHeight
+		})
+		terminal.focus()
+		async function getJSON(u) {
+			const response = await fetch(u)
+			const json = await response.json()
+			return json
+		}
+		function require(u) {
+			return getJSON(u)
+		}
+		async function main() {
+			let language = "en"
+			const argLanguage = prompt("Enter language code:", "en")
+			if (argLanguage != null && argLanguage.trim().length > 1) {
+				language = argLanguage.trim()
+			}
+			const wordsName = "all"
+			const locale = await require(`./locales/${language}/locale.json`)
+			const words = await require(`./locales/${language}/words/${wordsName}.json`)
+			const pics = await require('./hangarts.json')
+			const colors = {
+				red: null,
+				green: null,
+				blue: null,
+				cian: null,
+				yellow: null
+			}
+			const input = {
+				on: (e, f) => {
+					if (e === "data") {
+						inputFunction = f
+					}
+				}
+			}
+			const output = {
+				write: (data) => {
+					terminal.value += data
+				}
+			}
+			new Hangman({
+				locale: locale,
+				words: words,
+				pics: pics,
+				colors: colors,
+				input: input,
+				output: output
+			}).play()
+		}
+		main()
+	</script>
+</body>
+
+</html>
