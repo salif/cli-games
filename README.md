@@ -26,7 +26,7 @@ bash install-games.sh
 ```
 
 # How to Play?
-# for windows
+### for windows
 After cloning, run `dir` to get a list of available directories of games. Then navigate to your favourite game using the `cd` command
 
 **Eg:** `cd Hangman`
@@ -34,12 +34,12 @@ After cloning, run `dir` to get a list of available directories of games. Then n
 Read the **README** file in the respective directory to get more instruction about installation and playing.
 Most of the games support different languages (including `node-js` and `python`) and the choice is yours!
 
-# for Unix/Linux
+### for Unix/Linux
 just type
 ```sh
 bash games.sh
 ```
-and select the game by the number or 'e' for exit. If a game has a JS and Python version, for example *TicTacToe* it will automatically run the python one. if you like more the JS version, just change in games.sh the *python3 name.py* part to *npm run play*. for TicTacToe instead is *node tictactoe.js*
+and select the game by the number or 'e' for exit. If a game has a JS and Python version, you can choose which one you prefer you to play
 
 # Contributing
 
