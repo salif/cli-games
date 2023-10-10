@@ -103,7 +103,7 @@ class Hangman {
                 if (this.game.toGuess < 1) {
                     console.log(this.clr("\n ++++++++++++++++++++++++++++++", this.game.colors.blue))
                     console.log(this.clr(`\n ${this.game.word.join('')}`, this.colors.cian))
-                    console.log(this.clr(`\n ${this.db.you_won}\n`, this.game.colors.yellow))
+                    console.log(this.clr(`\n ${this.db.you_won}\n`, this.game.colors.green))
                     process.exit(0)
                 } else {
                     this.showPrompt(obfWord, null)
