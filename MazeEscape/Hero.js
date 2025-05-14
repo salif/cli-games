@@ -1,12 +1,22 @@
 const symbols = require('./maps').symbols;
 
 class Hero {
-
     constructor(map) {
-        this.x = 0;
-        this.y = 0;
         this.map = map;
         this.won = false;
+
+        // find the player position
+        for (let y = 0; y < map.length; y++) {
+            for (let x = 0; x < map[y].length; x++) {
+                if (map[y][x] === "♟") {
+                    this.x = x;
+                    this.y = y;
+                    return;
+                }
+            }
+        }
+
+        throw new Error("Player ♟ not found in map.");
     }
 
     moveUp() {
@@ -31,6 +41,7 @@ class Hero {
     }
 
     moveRight() {
+        //console.log(`[DEBUG] Trying to move RIGHT from (${this.x}, ${this.y})`);
         if (this.canGo(this.x + 1, this.y)) {
             this.leave();
             this.goto(this.x + 1, this.y);
@@ -51,11 +62,11 @@ class Hero {
     }
 
     canGo(x, y) {
-        return this.map[y] && (this.map[y][x] == " " || this.map[y][x] == symbols.door);
+        return this.map[y] && (this.map[y][x] === " " || this.map[y][x] === symbols.door);
     }
 
     isWinningPosition(x, y) {
-        return this.map[y][x] == symbols.door;
+        return this.map[y][x] === symbols.door;
     }
 
     hasWon() {
@@ -64,11 +75,21 @@ class Hero {
 
     nextMap(map) {
         this.map = map;
-        this.x = 0;
-        this.y = 0;
         this.won = false;
-    }
 
+        // find the new position of ♟
+        for (let y = 0; y < map.length; y++) {
+            for (let x = 0; x < map[y].length; x++) {
+                if (map[y][x] === "♟") {
+                    this.x = x;
+                    this.y = y;
+                    return;
+                }
+            }
+        }
+
+        throw new Error("Player ♟ not found in new map.");
+    }
 }
 
 module.exports = Hero;

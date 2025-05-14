@@ -15,6 +15,7 @@
 	"author": "Seniru Pasan",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"ansi-escapes": "^4.2.1"
+		"ansi-escapes": "^4.2.1",
+		"maze-escape": "file:"
 	}
 }
