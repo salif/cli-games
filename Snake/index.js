@@ -181,6 +181,18 @@ function loop() {
     // clear the previous interval and set a new one
     clearInterval(interval);
     interval = setInterval(loop, newInterval);
+
+    process.stdin.setRawMode(true);
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+
+    process.stdin.on('data', function (key) {
+    // press 'q' to quit the game
+    if (key === 'q' || key === '\u0003') {
+        console.log("\nQuitting game.");
+        process.exit();
+    }
+    });
 }
 
 function main() {
