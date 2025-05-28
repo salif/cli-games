@@ -44,8 +44,8 @@ const controlsBox = blessed.box({
 const nextBox = blessed.box({
   top: 3,
   left: 25,
-  width: 8,
-  height: 6,
+  width: 10,
+  height: 5,
   border: { type: 'line' },
   label: 'Next',
   style: { fg: 'white', border: { fg: '#00ffff' } },
