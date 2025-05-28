@@ -23,8 +23,17 @@ const scoreBox = blessed.box({
   style: { fg: 'yellow' },
 });
 
+const timeBox = blessed.box({   // AJOUT
+  top: 0,
+  left: 'center',
+  width: 24,
+  height: 1,
+  align: 'center',
+  style: { fg: 'magenta' },
+});
+
 const controlsBox = blessed.box({
-  top: 24,
+  top: 24,   // Décalé d'une ligne vers le bas
   left: 'center',
   width: 24,
   height: 1,
@@ -34,6 +43,7 @@ const controlsBox = blessed.box({
 
 screen.append(box);
 screen.append(scoreBox);
+screen.append(timeBox);   // AJOUT
 screen.append(controlsBox);
 screen.render();
 
@@ -48,21 +58,37 @@ const shapes = [
 ];
 
 let board, score, isPaused, current, game, isGameOver;
+let startTime, timerInterval;  // AJOUT : variables pour le timer
 
 function initGame() {
-  board = Array.from({ length: 20 }, () => Array(10).fill(0));
-  score = 0;
-  isPaused = false;
-  isGameOver = false;
-  current = {
-    shape: shapes[Math.floor(Math.random() * shapes.length)],
-    x: 3,
-    y: 0,
-  };
-  if (game) clearInterval(game);
-  game = setInterval(moveDown, 500);
-  draw();
-}
+    board = Array.from({ length: 20 }, () => Array(10).fill(0));
+    score = 0;
+    isPaused = false;
+    isGameOver = false;
+    current = {
+      shape: shapes[Math.floor(Math.random() * shapes.length)],
+      x: 3,
+      y: 0,
+    };
+    startTime = Date.now();
+    if (game) clearInterval(game);
+    game = setInterval(moveDown, 500);
+  
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      if (!isPaused && !isGameOver) {
+        const elapsedMs = Date.now() - startTime;
+        const minutes = Math.floor(elapsedMs / 60000);
+        const seconds = Math.floor((elapsedMs % 60000) / 1000);
+        const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        timeBox.setContent(`Time: ${timeStr}`);
+        screen.render();
+      }
+    }, 1000);
+  
+    draw();
+  }
+  
 
 function clearLines() {
   const fullRows = board
@@ -72,7 +98,7 @@ function clearLines() {
   if (fullRows.length === 0) return;
 
   for (const i of fullRows) {
-    board[i] = Array(10).fill(2); // valeur 2 = ligne à clignoter
+    board[i] = Array(10).fill(2);
   }
   draw();
 
@@ -124,6 +150,7 @@ function draw() {
   if (isGameOver) {
     box.setContent(`Game Over!\nScore: ${score}\nPress R to Restart`);
     scoreBox.setContent('');
+    timeBox.setContent('');  // AJOUT : vider le timer quand fini
     controlsBox.setContent('Q = Quit | R = Restart');
     screen.render();
     return;
@@ -171,6 +198,7 @@ function moveDown() {
     if (collides()) {
       isGameOver = true;
       clearInterval(game);
+      clearInterval(timerInterval);  // AJOUT : stop timer quand game over
       draw();
       return;
     }
