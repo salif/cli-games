@@ -7,7 +7,7 @@ const screen = blessed.screen({
 
 const box = blessed.box({
   top: 1,
-  left: 'center',
+  left: 1,
   width: 22,
   height: 22,
   border: { type: 'line' },
@@ -16,16 +16,16 @@ const box = blessed.box({
 
 const scoreBox = blessed.box({
   top: 23,
-  left: 'center',
+  left: 0,
   width: 24,
   height: 1,
   align: 'center',
   style: { fg: 'yellow' },
 });
 
-const timeBox = blessed.box({   // AJOUT
+const timeBox = blessed.box({
   top: 0,
-  left: 'center',
+  left: 0,
   width: 24,
   height: 1,
   align: 'center',
@@ -33,18 +33,30 @@ const timeBox = blessed.box({   // AJOUT
 });
 
 const controlsBox = blessed.box({
-  top: 24,   // Décalé d'une ligne vers le bas
-  left: 'center',
+  top: 24,
+  left: 0,
   width: 24,
   height: 1,
   align: 'center',
   style: { fg: 'cyan' },
 });
 
+const nextBox = blessed.box({
+  top: 3,
+  left: 25,
+  width: 8,
+  height: 6,
+  border: { type: 'line' },
+  label: 'Next',
+  style: { fg: 'white', border: { fg: '#00ffff' } },
+});
+
 screen.append(box);
 screen.append(scoreBox);
-screen.append(timeBox);   // AJOUT
+screen.append(timeBox);
 screen.append(controlsBox);
+screen.append(nextBox);
+
 screen.render();
 
 screen.key(['q', 'C-c'], () => process.exit(0));
@@ -57,48 +69,52 @@ const shapes = [
   [[1, 1, 0], [0, 1, 1]], // Z
 ];
 
-let board, score, isPaused, current, game, isGameOver;
-let startTime, timerInterval;  // AJOUT : variables pour le timer
+let board, score, isPaused, current, next, game, isGameOver;
+let startTime, timerInterval;
 
 function initGame() {
-    board = Array.from({ length: 20 }, () => Array(10).fill(0));
-    score = 0;
-    isPaused = false;
-    isGameOver = false;
-    current = {
-      shape: shapes[Math.floor(Math.random() * shapes.length)],
-      x: 3,
-      y: 0,
-    };
-    startTime = Date.now();
-    if (game) clearInterval(game);
-    game = setInterval(moveDown, 500);
-  
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      if (!isPaused && !isGameOver) {
-        const elapsedMs = Date.now() - startTime;
-        const minutes = Math.floor(elapsedMs / 60000);
-        const seconds = Math.floor((elapsedMs % 60000) / 1000);
-        const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        timeBox.setContent(`Time: ${timeStr}`);
-        screen.render();
-      }
-    }, 1000);
-  
-    draw();
-  }
-  
+  board = Array.from({ length: 20 }, () => Array(10).fill(0));
+  score = 0;
+  isPaused = false;
+  isGameOver = false;
+
+  next = shapes[Math.floor(Math.random() * shapes.length)];
+  current = {
+    shape: next,
+    x: 3,
+    y: 0,
+  };
+  next = shapes[Math.floor(Math.random() * shapes.length)];
+
+  startTime = Date.now();
+
+  if (game) clearInterval(game);
+  game = setInterval(moveDown, 500);
+
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    if (!isPaused && !isGameOver) {
+      const elapsedMs = Date.now() - startTime;
+      const minutes = Math.floor(elapsedMs / 60000);
+      const seconds = Math.floor((elapsedMs % 60000) / 1000);
+      const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      timeBox.setContent(`Time: ${timeStr}`);
+      screen.render();
+    }
+  }, 1000);
+
+  draw();
+}
 
 function clearLines() {
   const fullRows = board
-    .map((row, i) => row.every(cell => cell !== 0) ? i : -1)
+    .map((row, i) => (row.every(cell => cell !== 0) ? i : -1))
     .filter(i => i !== -1);
 
   if (fullRows.length === 0) return;
 
   for (const i of fullRows) {
-    board[i] = Array(10).fill(2);
+    board[i] = Array(10).fill(2); // ligne à clignoter
   }
   draw();
 
@@ -146,11 +162,23 @@ function rotate(matrix) {
   return matrix[0].map((_, i) => matrix.map(row => row[i]).reverse());
 }
 
+function drawNext() {
+  let output = '';
+  for (let i = 0; i < next.length; i++) {
+    for (let j = 0; j < next[i].length; j++) {
+      output += next[i][j] ? '██' : '  ';
+    }
+    output += '\n';
+  }
+  nextBox.setContent(output);
+}
+
 function draw() {
   if (isGameOver) {
     box.setContent(`Game Over!\nScore: ${score}\nPress R to Restart`);
     scoreBox.setContent('');
-    timeBox.setContent('');  // AJOUT : vider le timer quand fini
+    timeBox.setContent('');
+    nextBox.setContent('');
     controlsBox.setContent('Q = Quit | R = Restart');
     screen.render();
     return;
@@ -181,6 +209,7 @@ function draw() {
   box.setContent(output);
   scoreBox.setContent(`Score: ${score}${isPaused ? ' (PAUSED)' : ''}`);
   controlsBox.setContent('P = Pause | Q = Quit');
+  drawNext();
   screen.render();
 }
 
@@ -192,13 +221,14 @@ function moveDown() {
     current.y--;
     mergePiece();
     clearLines();
-    current.shape = shapes[Math.floor(Math.random() * shapes.length)];
+    current.shape = next;
     current.x = 3;
     current.y = 0;
+    next = shapes[Math.floor(Math.random() * shapes.length)];
     if (collides()) {
       isGameOver = true;
       clearInterval(game);
-      clearInterval(timerInterval);  // AJOUT : stop timer quand game over
+      clearInterval(timerInterval);
       draw();
       return;
     }
