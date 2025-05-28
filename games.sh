@@ -115,7 +115,7 @@ case $option in
 		cd $dir/TicTacToe && node index.js
 	;;
 		"py"|"python"|"PY"|"Python"|"p")
-		cd $dir/TicTacToe && python tictactoe.py
+		cd $dir/TicTacToe && python3 tictactoe.py
 	;;
 		*)
 		printf "Not valid option"
