@@ -65,15 +65,27 @@ function initGame() {
 }
 
 function clearLines() {
-  let newBoard = board.filter(row => row.some(cell => cell === 0));
-  const cleared = 20 - newBoard.length;
-  if (cleared > 0) {
-    score += cleared * 100;
+  const fullRows = board
+    .map((row, i) => row.every(cell => cell !== 0) ? i : -1)
+    .filter(i => i !== -1);
+
+  if (fullRows.length === 0) return;
+
+  for (const i of fullRows) {
+    board[i] = Array(10).fill(2); // valeur 2 = ligne à clignoter
   }
-  while (newBoard.length < 20) {
-    newBoard.unshift(Array(10).fill(0));
-  }
-  board = newBoard;
+  draw();
+
+  setTimeout(() => {
+    score += fullRows.length * 100;
+
+    board = board.filter((_, i) => !fullRows.includes(i));
+    while (board.length < 20) {
+      board.unshift(Array(10).fill(0));
+    }
+
+    draw();
+  }, 100);
 }
 
 function mergePiece() {
@@ -121,18 +133,23 @@ function draw() {
   const { shape, x, y } = current;
   for (let i = 0; i < shape.length; i++) {
     for (let j = 0; j < shape[i].length; j++) {
-      if (shape[i][j]) {
-        if (tempBoard[y + i]) {
-          tempBoard[y + i][x + j] = 1;
-        }
+      if (shape[i][j] && tempBoard[y + i]) {
+        tempBoard[y + i][x + j] = 1;
       }
     }
   }
 
-  let output = '';
-  for (let row of tempBoard) {
-    output += row.map(cell => (cell ? '██' : '  ')).join('') + '\n';
-  }
+  let output = tempBoard
+    .map(row =>
+      row
+        .map(cell => {
+          if (cell === 1) return '██';
+          if (cell === 2) return '░░';
+          return '  ';
+        })
+        .join('')
+    )
+    .join('\n');
 
   box.setContent(output);
   scoreBox.setContent(`Score: ${score}${isPaused ? ' (PAUSED)' : ''}`);
