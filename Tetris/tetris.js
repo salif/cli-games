@@ -9,36 +9,27 @@ const box = blessed.box({
   top: 1,
   left: 'center',
   width: 22,
-  height: 22, // suffisamment grand pour le plateau
-  border: {
-    type: 'line',
-  },
-  style: {
-    fg: 'white',
-    border: { fg: '#00ff00' },
-  },
+  height: 22,
+  border: { type: 'line' },
+  style: { fg: 'white', border: { fg: '#00ff00' } },
 });
 
 const scoreBox = blessed.box({
-  top: 23, // juste en dessous du cadre
+  top: 23,
   left: 'center',
   width: 24,
   height: 1,
   align: 'center',
-  style: {
-    fg: 'yellow',
-  },
+  style: { fg: 'yellow' },
 });
 
 const controlsBox = blessed.box({
-  top: 24, // juste en dessous du score
+  top: 24,
   left: 'center',
   width: 24,
   height: 1,
   align: 'center',
-  style: {
-    fg: 'cyan',
-  },
+  style: { fg: 'cyan' },
 });
 
 screen.append(box);
@@ -56,15 +47,22 @@ const shapes = [
   [[1, 1, 0], [0, 1, 1]], // Z
 ];
 
-let board = Array.from({ length: 20 }, () => Array(10).fill(0));
-let score = 0;
-let isPaused = false;
+let board, score, isPaused, current, game, isGameOver;
 
-let current = {
-  shape: shapes[Math.floor(Math.random() * shapes.length)],
-  x: 3,
-  y: 0,
-};
+function initGame() {
+  board = Array.from({ length: 20 }, () => Array(10).fill(0));
+  score = 0;
+  isPaused = false;
+  isGameOver = false;
+  current = {
+    shape: shapes[Math.floor(Math.random() * shapes.length)],
+    x: 3,
+    y: 0,
+  };
+  if (game) clearInterval(game);
+  game = setInterval(moveDown, 500);
+  draw();
+}
 
 function clearLines() {
   let newBoard = board.filter(row => row.some(cell => cell === 0));
@@ -111,6 +109,14 @@ function rotate(matrix) {
 }
 
 function draw() {
+  if (isGameOver) {
+    box.setContent(`Game Over!\nScore: ${score}\nPress R to Restart`);
+    scoreBox.setContent('');
+    controlsBox.setContent('Q = Quit | R = Restart');
+    screen.render();
+    return;
+  }
+
   let tempBoard = board.map(row => [...row]);
   const { shape, x, y } = current;
   for (let i = 0; i < shape.length; i++) {
@@ -135,7 +141,7 @@ function draw() {
 }
 
 function moveDown() {
-  if (isPaused) return;
+  if (isPaused || isGameOver) return;
 
   current.y++;
   if (collides()) {
@@ -146,9 +152,9 @@ function moveDown() {
     current.x = 3;
     current.y = 0;
     if (collides()) {
-      box.setContent('Game Over!\nScore: ' + score);
-      screen.render();
+      isGameOver = true;
       clearInterval(game);
+      draw();
       return;
     }
   }
@@ -156,7 +162,7 @@ function moveDown() {
 }
 
 screen.key(['up'], () => {
-  if (isPaused) return;
+  if (isPaused || isGameOver) return;
   const original = current.shape;
   const rotated = rotate(current.shape);
   current.shape = rotated;
@@ -167,28 +173,34 @@ screen.key(['up'], () => {
 });
 
 screen.key(['left'], () => {
-  if (isPaused) return;
+  if (isPaused || isGameOver) return;
   current.x--;
   if (collides()) current.x++;
   draw();
 });
 
 screen.key(['right'], () => {
-  if (isPaused) return;
+  if (isPaused || isGameOver) return;
   current.x++;
   if (collides()) current.x--;
   draw();
 });
 
 screen.key(['down'], () => {
-  if (isPaused) return;
+  if (isPaused || isGameOver) return;
   moveDown();
 });
 
 screen.key(['p'], () => {
+  if (isGameOver) return;
   isPaused = !isPaused;
   draw();
 });
 
-let game = setInterval(moveDown, 500);
-draw();
+screen.key(['r'], () => {
+  if (isGameOver) {
+    initGame();
+  }
+});
+
+initGame();
