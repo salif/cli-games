@@ -165,37 +165,20 @@ function loop() {
         process.exit(0);
     }
 
-    // increasing the speed of the snake if the player has passed the level (at a higher score)
-    // if (score >= 80) {
-    //     clearInterval(interval);
-    //     interval = setInterval(loop, 100);
-    // } else if (score >= 60) {
-    //     clearInterval(interval);
-    //     interval = setInterval(loop, 150);
-    // } else if (score >= 50) {
-    //     clearInterval(interval);
-    //     interval = setInterval(loop, 200);
-    // } else if (score >= 30) {
-    //     clearInterval(interval);
-    //     interval = setInterval(loop, 300);
-    // } else if (score >= 10) {
-    //     clearInterval(interval);
-    //     interval = setInterval(loop, 400);
-    // }
-
-    //Calcul de l'intervalle en fonction du score de manière progressive
+    // variable for the speed of the game
     let maxSpeed = 500;
     let minSpeed = 80;
     let speedFactor = 10;
 
+    // calculate the new speed based on the score
     let newInterval = maxSpeed - score * speedFactor;
 
-    // On s'assure que l'intervalle ne descend pas sous la valeur minimale
+    // ensure the new interval is not less than the minimum speed
     if (newInterval < minSpeed) {
         newInterval = minSpeed;
     }
 
-    // Mise à jour de l'intervalle de la boucle du jeu
+    // clear the previous interval and set a new one
     clearInterval(interval);
     interval = setInterval(loop, newInterval);
 }
