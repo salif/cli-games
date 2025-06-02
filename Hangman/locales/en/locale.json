@@ -6,6 +6,7 @@
   	"you_lose": "💀 You lost.",
   	"played": "Letter already played.",
   	"one_char": "Please enter a single letter.",
+	"remaining": "guesses remaining",
   	"play_again": "Restart",
   	"quit": "Quit",
   	"goodbye": "Thanks for playing!",
