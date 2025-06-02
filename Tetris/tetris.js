@@ -114,7 +114,7 @@ function clearLines() {
   if (fullRows.length === 0) return;
 
   for (const i of fullRows) {
-    board[i] = Array(10).fill(2); // ligne à clignoter
+    board[i] = Array(10).fill(2);
   }
   draw();
 
