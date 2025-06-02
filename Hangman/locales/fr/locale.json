@@ -1,11 +1,15 @@
 {
-	"language": "fr",
-	"played": "La lettre que vous avez écrite a déjà été jouée!",
-	"you_won": "Vous avez gagné!",
-	"you_lose": "Vous avez perdu!",
-	"one_char": "Ecrivez un seul caractère!",
-	"remaining": "Essais restants:",
-	"letters": "Lettres déjà jouées:",
-	"guess": "Devinez une lettre:",
-	"hangman": "Pendu"
+  "hangman": "Le Pendu",
+  "letters": "Lettres utilisées :",
+  "guess": "Devinez une lettre :",
+  "you_won": "Vous avez gagné !",
+  "you_lose": "Vous avez perdu.",
+  "played": "Lettre déjà jouée.",
+  "one_char": "Veuillez entrer une seule lettre.",
+  "remaining": "tentatives restantes",
+  "play_again": "Recommencer",
+  "quit": "Quitter",
+  "goodbye": "Merci d'avoir joué !",
+  "invalid_choice": "Choix invalide. Appuyez sur R pour recommencer ou Q pour quitter.",
+  "rules": "Bienvenue au Pendu !\n\nRègles :\n- Devinez le mot en proposant des lettres une par une.\n- Vous commencez avec 8 tentatives incorrectes autorisées.\n- La première et la dernière lettre sont déjà dévoilées.\n- Si vous trouvez toutes les lettres avant d'épuiser vos tentatives, vous gagnez !\n- Si vous n'avez plus de tentatives, vous perdez.\n\nBonne chance !"
 }

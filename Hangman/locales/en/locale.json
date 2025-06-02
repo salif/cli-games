@@ -1,14 +1,15 @@
 {
-	"hangman": "🎯 Hangman",
+	"hangman": "Hangman",
   	"letters": "Used letters:",
   	"guess": "Guess a letter:",
-  	"you_won": "🎉 You won!",
-  	"you_lose": "💀 You lost.",
+  	"you_won": "You won!",
+  	"you_lose": "You lost.",
   	"played": "Letter already played.",
   	"one_char": "Please enter a single letter.",
 	"remaining": "guesses remaining",
   	"play_again": "Restart",
   	"quit": "Quit",
   	"goodbye": "Thanks for playing!",
-  	"invalid_choice": "Invalid choice. Press R to Restart or Q to Quit."
+  	"invalid_choice": "Invalid choice. Press R to Restart or Q to Quit.",
+	"rules": "Welcome to Hangman!\n\nRules:\n- Guess the word by suggesting letters one at a time.\n- You start with 8 incorrect guesses allowed.\n- The first and last letters are already revealed.\n- If you guess all letters before running out of guesses, you win!\n- If you run out of guesses, you lose.\n\nGood luck!"
 }
