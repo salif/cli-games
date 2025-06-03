@@ -76,7 +76,6 @@ select_option() {
         # Print input line
         cursor_to $((last_index + 2))
         clear_line
-        print_input
 
         # Print help message
         cursor_to $((last_index + 3))
