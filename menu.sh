@@ -16,14 +16,24 @@ select_option() {
     clear_line()        { printf "$ESC[2K"; }
     print_input()       { printf "  Search: %s\n" "$input"; }
 
+    # Function to normalize text (remove accents and convert to lowercase)
+    normalize_text() {
+        echo "$1" | tr '[:upper:]' '[:lower:]' | iconv -f utf-8 -t ascii//TRANSLIT
+    }
+
     # Function to find the first match
     find_match() {
         local search="$1"
+        local normalized_search
+        local normalized_option
         local i
         local found=false
         
+        normalized_search=$(normalize_text "$search")
+        
         for i in "${!options[@]}"; do
-            if [[ "${options[i]}" =~ ^"$search" ]]; then
+            normalized_option=$(normalize_text "${options[i]}")
+            if [[ "$normalized_option" =~ ^"$normalized_search" ]]; then
                 selected=$i
                 found=true
                 break
@@ -31,7 +41,20 @@ select_option() {
         done
         
         if [ "$found" = false ]; then
-            input=""
+            # Keep only the last character
+            input="${input: -1}"
+            # If input is empty after keeping last char, try to find a match with it
+            if [ -n "$input" ]; then
+                normalized_search=$(normalize_text "$input")
+                for i in "${!options[@]}"; do
+                    normalized_option=$(normalize_text "${options[i]}")
+                    if [[ "$normalized_option" =~ ^"$normalized_search" ]]; then
+                        selected=$i
+                        found=true
+                        break
+                    fi
+                done
+            fi
         fi
     }
 
