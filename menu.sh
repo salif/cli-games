@@ -137,8 +137,12 @@ selected_index=$?
 
 # Handle the selection
 if [ $selected_index -eq ${#game_dirs[@]} ]; then
-    echo "Goodbye!"
-    exit 0
+    echo "▄▄▄▄·  ▄· ▄▌▄▄▄ .      " | lolcat -s 10000
+	echo "▐█ ▀█▪▐█▪██▌▀▄.▀·      " | lolcat -s 10000
+	echo "▐█▀▀█▄▐█▌▐█▪▐▀▀▪▄      " | lolcat -s 10000
+	echo "██▄▪▐█ ▐█▀·.▐█▄▄▌      " | lolcat -s 10000
+	echo "·▀▀▀▀   ▀ •  ▀▀▀  ▀  ▀ " | lolcat -s 10000
+    exit 0 
 else
     selected_game="${game_dirs[$selected_index]}"
     check_game_files "$selected_game"
