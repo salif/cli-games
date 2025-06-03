@@ -1,163 +1,145 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Function to create an interactive menu
-# Usage: interactive_menu "Option 1" "Option 2" "Option 3"
-function interactive_menu() {
+select_option() {
+    clear
+    local -r ESC=$(printf "\033")
     local -a options=("$@")
-    local current_selection=0
-    local key
+    local selected=0
+    local last_index=$((${#options[@]} - 1))
+    local input=""
 
-    # Function to display the menu
-    function display_menu() {
-        clear
-        echo "Use arrow keys to navigate, Enter to select, type the number, or the character in []:"
-        echo
+    cursor_blink_on()   { printf "$ESC[?25h"; }
+    cursor_blink_off()  { printf "$ESC[?25l"; }
+    cursor_to()         { printf "$ESC[$1;${2:-1}H"; }
+    print_option()      { printf "   %s\n" "$1"; }
+    print_selected()    { printf "  > \033[7m%s\033[0m\n" "$1"; }
+    clear_line()        { printf "$ESC[2K"; }
+    print_input()       { printf "  Search: %s\n" "$input"; }
+
+    # Function to find the first match
+    find_match() {
+        local search="$1"
+        local i
+        local found=false
+        
         for i in "${!options[@]}"; do
-            if [ $i -eq $current_selection ]; then
-                echo "> ${options[$i]}" | lolcat -as 10000
-            else
-                echo "  ${options[$i]}" | lolcat -as 10000
+            if [[ "${options[i]}" =~ ^"$search" ]]; then
+                selected=$i
+                found=true
+                break
             fi
         done
+        
+        if [ "$found" = false ]; then
+            input=""
+        fi
     }
 
-    # Function to handle key press
-    handle_key() {
-        read -rsn1 key
-        case "$key" in
-            $'\x1B')  # ESC sequence
-                read -rsn2 key
-                case "$key" in
-                    "[A") # Up arrow
-                        if [ $current_selection -gt 0 ]; then
-                            ((current_selection--))
-                        fi
-                        ;;
-                    "[B") # Down arrow
-                        if [ $current_selection -lt $((${#options[@]} - 1)) ]; then
-                            ((current_selection++))
-                        fi
-                        ;;
-                esac
-                ;;
-            "") # Enter key
-                return 0
-                ;;
-            [0-9]) # Number key
-                local num=$((10#$key))  # Convert to decimal, handles leading zeros
-                if [ $num -lt ${#options[@]} ]; then
-                    current_selection=$num
-                    return 0
-                fi
-                ;;
-            "e"|"E") # Exit key
-                current_selection=$((${#options[@]} - 1))  # Select last option (Exit)
-                return 0
-                ;;
-        esac
-        return 1
-    }
+    trap "cursor_blink_on; stty echo; printf '\n'; exit" SIGINT
 
-    # Main menu loop
+    cursor_blink_off
+    stty -echo
     while true; do
-        display_menu
-        handle_key
-        if [ $? -eq 0 ]; then
+        for i in "${!options[@]}"; do
+            cursor_to $((i + 1))
+            clear_line
+            if [[ $i == $selected ]]; then
+                print_selected "${options[i]}"
+            else
+                print_option "${options[i]}"
+            fi
+        done
+
+        # Print input line
+        cursor_to $((last_index + 2))
+        clear_line
+        print_input
+
+        # read user key
+        IFS= read -rsn1 key  # Read first character
+        if [[ $key == $ESC ]]; then
+            read -rsn2 key  # Read 2 more chars
+            if [[ $key == "[A" ]]; then  # Up
+                ((selected--))
+                ((selected < 0)) && selected=$last_index
+            elif [[ $key == "[B" ]]; then  # Down
+                ((selected++))
+                ((selected > $last_index)) && selected=0
+            fi
+        elif [[ $key == "" ]]; then  # Enter
             break
+        elif [[ $key == $'\x7f' ]]; then  # Backspace
+            input="${input%?}"
+            find_match "$input"
+        else  # Regular character
+            input+="$key"
+            find_match "$input"
         fi
     done
 
-    # Store the selection in a global variable
-    MENU_SELECTION=$current_selection
-    return $current_selection
+    cursor_to $((last_index + 2))
+    cursor_blink_on
+    stty echo
+    printf "\nYou selected: %s\n" "${options[selected]}"
+    return $selected
 }
 
-# Function to handle recursive menu selections
-# Usage: handle_menu_selection "menu_name" "option1" "option2" ...
-function handle_menu_selection() {
-    local menu_name="$1"
-    shift
-    local -a options=("$@")
-    
-    interactive_menu "${options[@]}"
-    local selected=$MENU_SELECTION
-    
-    # Return the selected option text (without the [x] prefix)
-    local selected_text="${options[$selected]}"
-    if [[ "$selected_text" =~ \[[^]]+\]\ (.+) ]]; then
-        echo "${BASH_REMATCH[1]}"
+get_game_directories() {
+    # Find all directories that don't start with "_" and store them in an array
+    local game_dirs=()
+    while IFS= read -r dir; do
+        game_dirs+=("$dir")
+    done < <(find . -maxdepth 1 -type d -not -path "*/\.*" -not -path "*/_*" -not -path "." | sed 's|^\./||' | sort)
+    echo "${game_dirs[@]}"
+}
+
+check_game_files() {
+    local game_dir="$1"
+    local has_python=false
+    local has_node=false
+
+    if [ -f "$game_dir/__init__.py" ]; then
+        has_python=true
+    fi
+    if [ -f "$game_dir/index.js" ]; then
+        has_node=true
+    fi
+
+    if [ "$has_python" = true ] && [ "$has_node" = true ]; then
+        echo "Both Python and Node.js versions are available. Which one would you like to run?"
+        local versions=("Python" "Node.js")
+        select_option "${versions[@]}"
+        local version_choice=$?
+        if [ $version_choice -eq 0 ]; then
+            echo "Running Python version..."
+            cd "$game_dir" && python3 __init__.py
+        else
+            echo "Running Node.js version..."
+            cd "$game_dir" && node index.js
+        fi
+    elif [ "$has_python" = true ]; then
+        echo "Running Python version..."
+        cd "$game_dir" && python3 __init__.py
+    elif [ "$has_node" = true ]; then
+        echo "Running Node.js version..."
+        cd "$game_dir" && node index.js
     else
-        echo "$selected_text"
+        echo "Error: No game files found in $game_dir"
+        exit 1
     fi
 }
 
-# Example usage with recursive menus:
-main_options=(
-    "[1] Games"
-    "[2] Settings"
-    "[e] Exit"
-)
+# Get game directories and add Quit option
+game_dirs=($(get_game_directories))
+options=("${game_dirs[@]}" "Quit")
+select_option "${options[@]}"
+selected_index=$?
 
-game_options=(
-    "[1] Snake"
-    "[2] Tetris"
-    "[b] Back"
-)
-
-settings_options=(
-    "[1] Sound"
-    "[2] Graphics"
-    "[b] Back"
-)
-
-# Main program loop
-while true; do
-    selection=$(handle_menu_selection "Main Menu" "${main_options[@]}")
-    
-    case "$selection" in
-        "Games")
-            while true; do
-                game_selection=$(handle_menu_selection "Games" "${game_options[@]}")
-                case "$game_selection" in
-                    "Snake")
-                        echo "Starting Snake..."
-                        # Add your game logic here
-                        read -p "Press Enter to continue..."
-                        ;;
-                    "Tetris")
-                        echo "Starting Tetris..."
-                        # Add your game logic here
-                        read -p "Press Enter to continue..."
-                        ;;
-                    "Back")
-                        break
-                        ;;
-                esac
-            done
-            ;;
-        "Settings")
-            while true; do
-                settings_selection=$(handle_menu_selection "Settings" "${settings_options[@]}")
-                case "$settings_selection" in
-                    "Sound")
-                        echo "Sound settings..."
-                        # Add your settings logic here
-                        read -p "Press Enter to continue..."
-                        ;;
-                    "Graphics")
-                        echo "Graphics settings..."
-                        # Add your settings logic here
-                        read -p "Press Enter to continue..."
-                        ;;
-                    "Back")
-                        break
-                        ;;
-                esac
-            done
-            ;;
-        "Exit")
-            echo "Goodbye!"
-            exit 0
-            ;;
-    esac
-done
+# Handle the selection
+if [ $selected_index -eq ${#game_dirs[@]} ]; then
+    echo "Goodbye!"
+    exit 0
+else
+    selected_game="${game_dirs[$selected_index]}"
+    check_game_files "$selected_game"
+fi
