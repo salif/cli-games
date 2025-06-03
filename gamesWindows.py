@@ -7,7 +7,7 @@ def run_game(path, command):
 
 def main():
     games = [
-       "[1] Hangman",
+        "[1] Hangman",
         "[2] MazeEscape",
         "[3] RockPaperScissors",
         "[4] Snake",
