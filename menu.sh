@@ -78,6 +78,11 @@ select_option() {
         clear_line
         print_input
 
+        # Print help message
+        cursor_to $((last_index + 3))
+        clear_line
+        printf "  \033[2m↑/↓: Navigate | Type to search | Enter: Select | Ctrl+C: Quit\033[0m\n"
+
         # read user key
         IFS= read -rsn1 key  # Read first character
         if [[ $key == $ESC ]]; then
