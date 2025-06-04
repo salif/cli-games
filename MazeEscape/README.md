@@ -25,6 +25,16 @@ You have to follow these steps in order to play this game
 
 <hr>
 
+### 🌀 New Feature: Random Maze Mode (2025/05/14)
+
+We've added a brand new **Random Maze Mode**!
+
+When starting game, you can press **2** to enter this mode. In this mode, the game will generate a random maze for you to escape from. Each time you play, you'll face a different maze layout, making the game even more challenging and exciting.
+
+But if you prefer the classic experience, you can still choose the **1** option to play the original maze.
+
+No more predictable maps — enjoy endless variety!
+
 ## Contributing
 
 Want to contribute this game? Great! Here are some ways that you can help us with this.
