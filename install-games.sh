@@ -29,6 +29,16 @@ else
 	exit 1
 fi
 
+printf "Installing Tetris dependencies... \n"
+cd ../Tetris && npm install .
+
+if [[ -d node_modules ]]; then
+	printf "Tetris $text_installed"
+else
+	printf "Tetris $text_not_installed"
+	exit 1
+fi
+
 printf "Installing TextAdventures dependencies... \n"
 cd ../TextAdventures && npm install .
 
