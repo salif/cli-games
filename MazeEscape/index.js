@@ -7,6 +7,8 @@ let round = 0;
 let map = maps[round];
 let hero = new Hero(map);
 let gameStart = false;
+let moveCount = 0;
+let totalMoves = 0;
 
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
@@ -23,28 +25,41 @@ process.stdin.on('keypress', (str, key) => {
             round++;
             map = maps[round];
             hero.nextMap(map);
+            moveCount = 0;
         } else {
             console.log(clr("Congratulations! You've completed all the maps", "green"));
+            console.log(clr("Your number of moves is " + totalMoves,"blue"));
             process.exit(0);
         }
-    } else {
+    } else if (key.name === 'q') {
+        console.log("Thank you for playing!");
+        process.exit(0);
+    }  else {
         if (gameStart) {
             switch (key.name) {
                 case "up":
                     hero.moveUp();
+                    moveCount++;
+                    totalMoves++;
                     break;
                 case "down":
                     hero.moveDown();
+                    moveCount++;
+                    totalMoves++;
                     break;
                 case "left":
                     hero.moveLeft();
+                    moveCount++;
+                    totalMoves++;
                     break;
                 case "right":
                     hero.moveRight();
+                    moveCount++;
+                    totalMoves++;
                     break;
             }
         }
-    }
+    } 
     draw();
 });
 
@@ -59,6 +74,10 @@ function draw() {
     }
     res += "    " + (symbols.wall + " ").repeat(map[0].length) + "\n";
     res = res.replace("♟", clr("♟", "yellow")).replace(/▣/g, clr("▣", "green"));
+    
+    res += `\n${clr("Moves:", "blue")} ${moveCount}\n`;
+    res += `${clr("Total Moves:", "blue")} ${totalMoves}\n`;
+
     print(res);
 
     if (hero.hasWon()) {
