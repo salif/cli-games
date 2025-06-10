@@ -173,8 +173,4 @@ if [ $selected_index -eq ${#game_dirs[@]} ]; then
 else
     selected_game="${game_dirs[$selected_index]}"
     check_game_files "$selected_game"
-<<<<<<< HEAD
 fi
-=======
-fi
->>>>>>> hugoglvs-Tetris
