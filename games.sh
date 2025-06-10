@@ -8,6 +8,7 @@ echo "[3]  RockPaperScissors " | lolcat -as 10000
 echo "[4]  Snake " | lolcat -as 10000
 echo "[5]  TextAdventure " | lolcat -as 10000
 echo "[6]  TicTacToe " | lolcat -as 10000
+echo "[7]  Wordle " | lolcat -as 10000
 echo "[e]  Exit" | lolcat -as 10000
 
 #select the game
@@ -54,11 +55,15 @@ case $option in
 		cd $dir/TicTacToe && node index.js
 	;;
 		"py"|"python"|"PY"|"Python"|"p")
-		cd $dir/TicTacToe && python tictactoe.py
+		cd $dir/TicTacToe && python3 tictactoe.py
 	;;
 		*)
 		printf "Not valid option"
 	esac
+;;
+
+	"7")
+	cd $dir/Wordle && npm run play
 ;;
 
 	"e")
