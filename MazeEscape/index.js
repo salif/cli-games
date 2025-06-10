@@ -33,6 +33,7 @@ process.stdin.on('keypress', (str, key) => {
         }
     } else if (key.name === 'q') {
         console.log("Thank you for playing!");
+	console.log(esc.cursorShow);
         process.exit(0);
     }  else {
         if (gameStart) {

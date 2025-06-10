@@ -121,35 +121,44 @@ get_game_directories() {
 }
 
 check_game_files() {
-    local game_dir="$1"
+    if command -v deno &>/dev/null; then
+		jsCmd="deno run"
+	elif command -v node &>/dev/null; then
+		jsCmd="node"
+	else
+		echo "Neither deno nor node is installed. Please install one of them."
+		exit 1
+	fi
+
+	local game_dir="$1"
     local has_python=false
-    local has_node=false
+    local has_js=false
 
     if [ -f "$game_dir/__init__.py" ]; then
         has_python=true
     fi
     if [ -f "$game_dir/index.js" ]; then
-        has_node=true
+        has_js=true
     fi
 
-    if [ "$has_python" = true ] && [ "$has_node" = true ]; then
+    if [ "$has_python" = true ] && [ "$has_js" = true ]; then
         echo "Both Python and Node.js versions are available. Which one would you like to run?"
-        local versions=("Python" "Node.js")
+        local versions=("Python" "JavaScript")
         select_option "${versions[@]}"
         local version_choice=$?
         if [ $version_choice -eq 0 ]; then
             echo "Running Python version..."
             cd "$game_dir" && python3 __init__.py
         else
-            echo "Running Node.js version..."
-            cd "$game_dir" && node index.js
+            echo "Running JavaScript version..."
+            cd "$game_dir" && $jsCmd index.js
         fi
     elif [ "$has_python" = true ]; then
         echo "Running Python version..."
         cd "$game_dir" && python3 __init__.py
-    elif [ "$has_node" = true ]; then
-        echo "Running Node.js version..."
-        cd "$game_dir" && node index.js
+    elif [ "$has_js" = true ]; then
+        echo "Running JavaScript version..."
+        cd "$game_dir" && $jsCmd index.js
     else
         echo "Error: No game files found in $game_dir"
         exit 1
@@ -164,7 +173,7 @@ selected_index=$?
 
 # Handle the selection
 if [ $selected_index -eq ${#game_dirs[@]} ]; then
-    echo "▄▄▄▄·  ▄· ▄▌▄▄▄ .      " | lolcat -s 10000
+	echo "▄▄▄▄·  ▄· ▄▌▄▄▄ .      " | lolcat -s 10000
 	echo "▐█ ▀█▪▐█▪██▌▀▄.▀·      " | lolcat -s 10000
 	echo "▐█▀▀█▄▐█▌▐█▪▐▀▀▪▄      " | lolcat -s 10000
 	echo "██▄▪▐█ ▐█▀·.▐█▄▄▌      " | lolcat -s 10000
