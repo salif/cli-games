@@ -68,7 +68,7 @@ class Hangman {
 
             const trimmed = choice.trim().toUpperCase();
             if (trimmed === "R") {
-                return this.play();  // relance le jeu et attend
+                return this.play();
             } else if (trimmed === "Q") {
                 this.write(this.clr(`\n ${this.db.goodbye}\n`, this.colors.green));
                 process.exit(0);
